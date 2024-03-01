@@ -5,11 +5,11 @@
 #' @param column_names name of field containing constituency names
 #' @param geometry_filter longitude/latitude coordinates of the point/postcode of interest
 #' 
-#' @examples get_boundary_names("Westminster_Parliamentary_Constituencies_Dec_2022_UK_BGC",0,"PCON22NM","-1.282825,52.354169,0.206626,52.7106")
+#' @examples get_boundary_postcode("Westminster_Parliamentary_Constituencies_Dec_2022_UK_BGC",0,"PCON22NM","-1.282825,52.354169,0.206626,52.7106")
 #' @returns Returns a list of constituency names corresponding to all of the coordinates submitted
 #' @export
 
-get_boundary_names <- function(boundary,
+get_boundary_postcode <- function(boundary,
                              layer,
                              column_names, 
                              geometry_filter = NULL) {
