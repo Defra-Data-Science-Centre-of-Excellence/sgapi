@@ -1,0 +1,27 @@
+Package: sg_api
+Title: Functions to Aid Querying Nomis API
+Version: 1.0.0
+Authors@R: 
+    person("Andrew", "Christy", , "OR_Hub@defra.gov.uk", role = c("aut", "cre")),
+           person("James","Macpherson", , "James.macpherson@defra.gov.uk", role = "aut"),
+           person("Hadyn","Jenkins", role = "aut" )
+Description: Functions to.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+BugReports: https://github.com/Defra-Data-Science-Centre-of-Excellence/sgApi/issues
+Imports:
+    magrittr,
+    data.table,
+    sf,
+    dplyr,
+    tidyverse,
+    httr,
+    jsonlite
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Depends: 
+    R (>= 3.6)
+LazyData: true
