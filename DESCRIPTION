@@ -1,21 +1,24 @@
-Package: sg_api
+Package: sgapi
 Title: Functions to Aid Querying Nomis API
 Version: 1.0.0
 Authors@R: 
     c(person("Andrew", "Christy", , "OR_Hub@defra.gov.uk", role = c("aut", "cre")),
            person("James","Macpherson", , "James.macpherson@defra.gov.uk", role = "aut"),
            person("Hadyn","Jenkins", role = "aut" ))
-Description: Functions to.
+Description: Functions to facilitate extraction of geospatial data from ONS Open Geography and Nomis.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+URL: https://defra-data-science-centre-of-excellence.github.io/sgapi/, https://github.com/Defra-Data-Science-Centre-of-Excellence/sgapi
 BugReports: https://github.com/Defra-Data-Science-Centre-of-Excellence/sgApi/issues
 Imports:
     magrittr,
     sf,
     dplyr,
     httr,
+    readr,
+    xml2,
     methods
 Suggests: 
     testthat (>= 3.0.0)

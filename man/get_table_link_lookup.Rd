@@ -27,7 +27,6 @@ Extract table with a lookup between two boundary scales, e.g. get a lookup betwe
 for a given NOMIS dataset ID.
 }
 \examples{
-get_table_link_lookup("https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/
-LAD22_CTRY22_UK_LU/FeatureServer/0/",MSOA11CD,LAD15CD,MSOA11NM,LAD15NM)
+get_table_link_lookup("https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/MSOA21_LAD23_EW_LU/FeatureServer/0/","MSOA21CD","LAD23CD","MSOA21NM","LAD23NM")
 
 }

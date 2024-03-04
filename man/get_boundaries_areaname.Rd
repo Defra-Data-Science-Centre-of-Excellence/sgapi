@@ -20,6 +20,7 @@ A geojson spatial file of the constituencies submitted to the function
 Extract a geojson file of our chosen constituencies
 }
 \examples{
-get_boundaries_areaname("Local_Authority_Districts_December_2022_UK_BGC_V2")
+get_boundaries_areaname("Local_Authority_Districts_December_2022_UK_BGC_V2","LAD22NM", 
+c("Westminster","Tower Hamlets","County Durham"))
 
 }

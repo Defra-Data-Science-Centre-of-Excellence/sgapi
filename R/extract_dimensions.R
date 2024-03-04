@@ -7,7 +7,7 @@
 #' 
 #' @param id A table ID recognised by NOMIS (e.g "NM_1_1")
 #' 
-#' @examples extract_dimensions("NM_1_1")
+#' @examples extract_dimensions("NM_1240_1")
 #' @export
 
 #The dimensions refer to the different columns of the table, i.e. year of interest, total claimants, occupation, etc.
@@ -17,9 +17,10 @@ extract_dimensions <- function(id) {
   output <- c()
   # LOOP OVER EACH DIMENSION
 
-  for (i in c(1:length(dimensions_overview))) {
+  for (i in seq_along(dimensions_overview)) {
     # EXTRACT DIMENSION NAME
     dimension_name <- dimensions_overview[[i]]$concept
+    
     structure_overview<-get_structure(id,dimension_name)
     print(dimension_name)
 
@@ -148,3 +149,4 @@ extract_dimensions <- function(id) {
   rownames(output) <- NULL
   return(output)
 }
+

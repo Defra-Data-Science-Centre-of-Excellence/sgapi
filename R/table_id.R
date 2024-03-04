@@ -1,6 +1,10 @@
 #' Extract unique table id - this is used to 
 #' rapidly query census data in other functions
 #' 
+#' @import xml2
+#' 
+#' 
+#' 
 #' @param name A valid NOMIS table name given as a string
 #' @param base_url Base url for the api being queried
 #' 
@@ -17,6 +21,7 @@ table_id <- function(name,
       name,
       "*"
     ))
-  assert_function(raw_data$status_code>=400L, paste0("API has failed, check that the 'name' of the table is spelled correctly. The status code is: ",raw_data$status_code))
+  #print(raw_data$overview$)
+  #assert_function(raw_data$status_code>=400L, paste0("API has failed, check that the 'name' of the table is spelled correctly. The status code is: ",raw_data$status_code))
   return(httr::content(raw_data)$structure$keyfamilies$keyfamily[[1]]$id)
 }

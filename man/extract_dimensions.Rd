@@ -15,5 +15,5 @@ Output will be in the form of
 a tidy data frame.
 }
 \examples{
-extract_dimensions("NM_1_1")
+extract_dimensions("NM_1240_1")
 }

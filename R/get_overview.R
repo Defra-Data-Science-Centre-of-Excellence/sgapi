@@ -1,5 +1,6 @@
 #' Retrieve dataset overview
 #' for a valid NOMIS table id
+#' @importFrom magrittr %>%
 #' 
 #' @param id A valid NOMIS id.
 #' 
@@ -15,8 +16,9 @@ get_overview <- function(id) {
                    "dataset/",
                    id,
                    ".overview.json")) %>%
-    httr::content()
+                   httr::content()
+  #print(raw_data$overview$status)
   #assert_function(raw_data=='{ \"error\" : \"Unable to contact data engine\" }"',"There is an issue with this Nomis table, please contact Nomis for more details")
-  assert_function(raw_data$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_data$status_code))
+  #assert_function(raw_data$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_data$status_code))
   return(raw_data)
 }

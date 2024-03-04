@@ -10,12 +10,12 @@ get_structure(id, dim)
 \arguments{
 \item{id}{A valid NOMIS id.}
 
-\item{dim}{An integer determining which dimension is queried.}
+\item{dim}{The name of the g which dimension is queried.}
 }
 \description{
 Retrieve dataset overview
 for a valid NOMIS table id
 }
 \examples{
-get_structure("NM_1_1",1)
+get_structure("NM_187_1","industry")
 }

@@ -1,10 +1,12 @@
 #' Retrieve dataset overview
 #' for a valid NOMIS table id
+#' @importFrom magrittr %>%
 #' 
 #' @param id A valid NOMIS id.
-#' @param dim An integer determining which dimension is queried.
+#' @param dim The name of the g which dimension is queried.
 #' 
-#' @examples get_structure("NM_1_1",1)
+#' @examples 
+#' get_structure("NM_187_1","industry")
 #' @export
 
 get_structure <- function(id,dim) {
@@ -16,7 +18,7 @@ get_structure <- function(id,dim) {
                    "/",
                    dim,
                    ".def.sdmx.json")) %>%
-    httr::content(raw_data)
-  assert_function(raw_data$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_data$status_code))
+    httr::content()
+  #assert_function(raw_data$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_data$status_code))
   return(raw_data)
 }

@@ -12,8 +12,7 @@
 #' @param col_name_4 Field in ONS table containing the constituency name of the larger scale resolution
 #' 
 #' @examples 
-#' get_table_link_lookup("https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/
-#' LAD22_CTRY22_UK_LU/FeatureServer/0/",MSOA11CD,LAD15CD,MSOA11NM,LAD15NM)
+#' get_table_link_lookup("https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/MSOA21_LAD23_EW_LU/FeatureServer/0/","MSOA21CD","LAD23CD","MSOA21NM","LAD23NM")
 #' 
 #' @returns A dataframe lookup between two chosen boundary resolutions
 #' @export
@@ -33,7 +32,7 @@ get_table_link_lookup <- function(api_link,col_name_1,col_name_2,col_name_3,col_
   x_c <- httr::GET(paste0(
     api_link_count))
   raw_count <- httr::content(x_c)
-
+  #print(raw_count)
 
 
   #The restful/esri API has a limit of 32,000 rows that it will return.
@@ -58,9 +57,9 @@ get_table_link_lookup <- function(api_link,col_name_1,col_name_2,col_name_3,col_
       api_link_full))
     raw_data <- httr::content(x)
     raw_count <- length(raw_data$features)
-    if (length(raw_data$features) == 0){loop_bool <- "False"}
+    if (raw_count == 0){loop_bool <- "False"}
     
-    if (length(raw_data$features) > 0){
+    if (raw_count > 0){
     for(j in 1:length(raw_data$features)){
       
       
@@ -78,7 +77,7 @@ get_table_link_lookup <- function(api_link,col_name_1,col_name_2,col_name_3,col_
     }
   }
   #If the dataset has fewer than 32,000 rows, can just do the simple extraction
-  else if ((raw_count$count <= 32000) & (raw_count > 0)){
+  else if ((raw_count <= 32000) & (raw_count > 0)){
     if ((col_name_1 == col_name_2) & (col_name_3 == col_name_4)){
       api_link_full <- paste0(api_link,queries,col_name_1,",",col_name_3,"&returnGeometry=false&resultType=standard&outSR=4326&f=json")
     }
@@ -104,8 +103,8 @@ get_table_link_lookup <- function(api_link,col_name_1,col_name_2,col_name_3,col_
     )
   }}
   #if the dataset is large and the API count is successful, loop through the dataset in 32,000 row extracts until all of the data has been extracted
-  else if (raw_count$count > 32000){
-    num_loops = ceiling(raw_count$count/32000)
+  else if (raw_count > 32000){
+    num_loops = ceiling(raw_count/32000)
     for (n in 1:num_loops){
     off_set_val <- (n-1)*32000
     #print(off_set_val)

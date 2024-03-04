@@ -1,4 +1,5 @@
 #' Retrieve a NOMIS table using a given table ID. 
+#' @import readr
 #' 
 #' @param id a table ID recognised by NOMIS (e.g. "NM_1_1")
 #' @param options a list of paramaters to pass to the API query.
@@ -6,7 +7,7 @@
 #' @param uid Unique Nomis identifier to enable larger NOMIS queries - https://www.nomisweb.co.uk/
 #' 
 #' @examples 
-#' getTable("NM_1_1", options = list("geography" = "TYPE480", "time" = "latest"))
+#' get_table("NM_1_1", options = list("geography" = "TYPE480", "time" = "latest"))
 #' 
 #' @returns returns tidy dataframe of selected NOMIS table with the selected parameters and user filters applied
 #' @export

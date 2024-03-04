@@ -22,6 +22,6 @@ returns tidy dataframe of selected NOMIS table with the selected parameters and 
 Retrieve a NOMIS table using a given table ID.
 }
 \examples{
-getTable("NM_1_1", options = list("geography" = "TYPE480", "time" = "latest"))
+get_table("NM_1_1", options = list("geography" = "TYPE480", "time" = "latest"))
 
 }

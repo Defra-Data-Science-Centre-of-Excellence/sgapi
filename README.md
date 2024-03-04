@@ -10,7 +10,6 @@ The key functionality offered is:
 3. Returns results from queries of datasets
 4. Returns overview of tables
 
-The key functions are 
-- 
+![alt text](https://https://github.com/Defra-Data-Science-Centre-of-Excellence/sgapi/blob/master/DefraLogo.png)
 
            

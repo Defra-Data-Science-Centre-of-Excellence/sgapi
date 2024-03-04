@@ -2,6 +2,7 @@
 #'
 #' Returns a list including the name and id of each
 #' data source available on NOMIS.
+#' @importFrom magrittr %>%
 #'
 #' @examples
 #' data_sources()
@@ -32,6 +33,3 @@ data_sources <- function() {
   #                                             TRUE ~ sourceId))
   return(sources)
 }
-
-
-test_df <- data_sources()

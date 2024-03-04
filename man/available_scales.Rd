@@ -18,6 +18,6 @@ Retrieve available spatial scales
 for a given NOMIS dataset ID.
 }
 \examples{
-available_scales("NM_1_1")
+available_scales("NM_1003_1")
 
 }

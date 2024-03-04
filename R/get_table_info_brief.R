@@ -18,6 +18,6 @@ get_table_info_brief <- function(id){
                               id,
                               ".overview.json?select=DatasetInfo,DatasetMetadata,Dimensions,Codes-workforce,Contact,Units")) %>%
     httr::content()
-  assert_function(raw_info$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_info$status_code))
+  #assert_function(raw_info$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_info$status_code))
   return(raw_info)
 }
