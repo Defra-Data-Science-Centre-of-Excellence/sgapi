@@ -1,5 +1,5 @@
-# sgApi <img width="254" alt="Defra logo" src="https://github.com/Defra-Data-Science-Centre-of-Excellence/sgapi/assets/126087299/1c7cfe02-87cd-407e-b245-991374cfc488">
-
+<img width="254" alt="Defra logo" src="https://github.com/Defra-Data-Science-Centre-of-Excellence/sgapi/assets/126087299/1c7cfe02-87cd-407e-b245-991374cfc488">
+# sgApi 
 
 
 
@@ -26,7 +26,12 @@ More information on theses sources can be found here:
 4. **get_table.R** - extracts a dataframe from the chosen Nomis table for your selected area and selected filters
 5. **get_table_link_lookup.R** - retrieves a dataframe with the lookup table between two resolutions, taken from 
 
+## Exploratory Functions
 
+1. **list_boundaries.R** - lists all boundary masks available on the ONS Open Geography
+2. **list_tables.R** - lists all tables, including their name and reference code, from nomis
+3. **available_scales.R** - provides list of available geographical resolutions for your chosen nomis table
+4. **data_sources.R** - lists all available data sources on nomis
 
 ## Additional API Information
 
