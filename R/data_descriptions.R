@@ -15,6 +15,26 @@
 #' @source {availableBoundaries.rda} 
 "availableBoundaries"
 
+#' Lookup to match ONS and NOMIS boundary names
+#' 
+#' 
+#' Lookup table providing ONS and NOMIS references for a given ONS boundary layer. The variables are as follows:
+#'
+#' @format A data frame with 30 rows and 4 variables:
+#' \describe{
+#'   \item{resolution}{boundary layer, written in interpretable manner}
+#'   \item{ons}{corresponding boundary layer in the format the ONS will interpret}
+#'   \item{nomis}{corresponding boundary layer in the format the ONS will interpret}
+#'   \item{Names_and_Codes}{lookup file containing the constituency names and codes of the boundary layer}
+#' }
+#' 
+#' @docType data
+#' @keywords data
+#' @name lookup.rda
+#' 
+#' 
+#' @source {lookup.rda} 
+"lookup"
 
 #' 
 #' #' List of tables on NOMIS

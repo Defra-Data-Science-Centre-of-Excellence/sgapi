@@ -1,14 +1,19 @@
 #' Extract table with a lookup between two boundary scales, e.g. get a lookup between Regions and Parliamentary constituencies
 #' for a given NOMIS dataset ID. 
 #' 
-#' @param api_link Base api link which determines which table to query e.g. https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD22_CTRY22_UK_LU/FeatureServer/0/
+#' @import dplyr
+#' @importFrom magrittr %>%
+#' 
+#' @param api_link Base api link which determines which table to query e.g. 
+#' https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD22_CTRY22_UK_LU/FeatureServer/0/
 #' @param col_name_1 Field in ONS table containing the constituency code of the smaller scale resolution
 #' @param col_name_2 Field in ONS table containing the constituency code of the larger scale resolution
 #' @param col_name_3 Field in ONS table containing the constituency name of the smaller scale resolution
 #' @param col_name_4 Field in ONS table containing the constituency name of the larger scale resolution
 #' 
 #' @examples 
-#' get_table_link_lookup("https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD22_CTRY22_UK_LU/FeatureServer/0/",MSOA11CD,LAD15CD,MSOA11NM,LAD15NM)
+#' get_table_link_lookup("https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/
+#' LAD22_CTRY22_UK_LU/FeatureServer/0/",MSOA11CD,LAD15CD,MSOA11NM,LAD15NM)
 #' 
 #' @returns A dataframe lookup between two chosen boundary resolutions
 #' @export

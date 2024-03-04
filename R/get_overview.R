@@ -9,11 +9,14 @@
 #' @export
 
 get_overview <- function(id) {
-  
+
   base_url = "https://www.nomisweb.co.uk/api/v01/"
-  httr::GET(paste0(base_url,
+  raw_data <- httr::GET(paste0(base_url,
                    "dataset/",
                    id,
                    ".overview.json")) %>%
     httr::content()
+  #assert_function(raw_data=='{ \"error\" : \"Unable to contact data engine\" }"',"There is an issue with this Nomis table, please contact Nomis for more details")
+  assert_function(raw_data$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_data$status_code))
+  return(raw_data)
 }

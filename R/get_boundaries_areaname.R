@@ -1,7 +1,6 @@
 #' Extract a geojson file of our chosen constituencies
 #' 
 #' @param boundary The resolution of constituencies, e.g. Census Output areas or Westminster Constituencies. Available boundaries can be found here: https://geoportal.statistics.gov.uk/ 
-#' @param layer This is equal to 0
 #' @param col_name_var The name of the datafield where the constituency name is held, e.g. PCON22NM for 2022 Parliamentary Constituencies
 #' @param chosen_constituency_list List of chosen constituencies
 #' 
@@ -11,15 +10,12 @@
 #' @export
 
 get_boundaries_areaname <- function(boundary,
-                                            layer,
-                                            col_name_var,
-                                            chosen_constituency_list) {
+                                    col_name_var,
+                                    chosen_constituency_list) {
   
-  if(boundary=="Wards_December_2022_Boundaries_UK_BGC"){
-    output_fields="WD22CD,WD22NM,BNG_E,BNG_N,LONG,LAT,Shape_Leng,OBJECTID,Shape__Area,Shape__Length,GlobalID"}
-    else {
-      output_fields="*"
-    }
+  layer=0
+
+  output_fields="*"
   
   base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/"
   api_list_constituencies = ''

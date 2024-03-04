@@ -1,14 +1,17 @@
 #' Retrieve available spatial scales
 #' for a given NOMIS dataset ID. 
 #' 
+#' @importFrom magrittr %>%
+#' 
 #' @param id A valid NOMIS table id given as a string
 #' 
 #' @examples 
-#' available_scales("NM_1_1")
+#' available_scales("NM_1003_1")
 #' 
 #' @return A tidy dataframe listing the Geographical scales available for the NOMIS table selected. E.g. Many census datasets are available at MSOA and LSOA resolutions but not at Regional level
 #' 
 #' @export
+ 
 available_scales <- function(id) {
   
   base_url = "https://www.nomisweb.co.uk/api/v01/"
@@ -36,9 +39,10 @@ available_scales <- function(id) {
 
     
     if (!is.null(x$overview$dimensions$dimension[[geography_index]]$types$type)) {
-      if (sg_api::is_nested(x$overview$dimensions$dimension[[geography_index]]$types$type)) {
-        y <-
-          x$overview$dimensions$dimension[[geography_index]]$types$type %>% do.call(rbind.data.frame, .) 
+      if (is_nested(x$overview$dimensions$dimension[[geography_index]]$types$type)) {
+        y_stg <-
+          x$overview$dimensions$dimension[[geography_index]]$types$type
+          y <- do.call(rbind.data.frame, y_stg) 
       } else{
         y <-
           x$overview$dimensions$dimension[[geography_index]]$types$type
@@ -49,7 +53,7 @@ available_scales <- function(id) {
     }
   }
   
-  if(class(y) != "character"){
+  if(is(y,"character")){
     y <- as.data.frame(y)
   }
   return(y)

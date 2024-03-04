@@ -2,22 +2,24 @@
 #' given a valid boundary name and layer name.
 #'
 #' @param boundary A valid boundary name given as a string
-#' @param layer A valid layer given as an integer (defaults to 0)
-#' @param geometry_filter geospatial shape or point (using latitude and longitude) Currently limited to a rectangular box or dropped pin
+#' @param geometry_filter geospatial shape or point (using latitude and longitude) 
+#' Currently limited to a rectangular box or dropped pin
 #'
 #' @examples 
-#' getBoundaries("Middle_Super_Output_Areas_December_2011_Boundaries/",0,"-1.282825,52.354169,0.206626,52.7106")
+#' get_boundaries("MSOA_Dec_2011_Boundaries_Generalised_Clipped_BGC_EW_V3_2022",
+#' "-1.282825,52.354169,0.206626,52.7106")
 #' 
-#' @returns Shapefile of all constituencies in the geospatial area submitted through the geometryFilter, at the chosen ONS Boundary
-#' export
+#' @returns Shapefile of all constituencies in the geospatial area submitted through 
+#' the geometry_filter, at the chosen ONS Boundary export
+#' @export
 
 get_boundaries <- function(boundary,
-                          layer,
                           geometry_filter = NULL) {
   base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/"
 
   output_fields="*"
- 
+  layer=0
+  
   if (is.null(geometry_filter)) {
     spatial_object <- sf::st_read(
       paste0(
