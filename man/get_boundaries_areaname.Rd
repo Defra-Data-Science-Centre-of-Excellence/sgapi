@@ -4,17 +4,10 @@
 \alias{get_boundaries_areaname}
 \title{Extract a geojson file of our chosen constituencies}
 \usage{
-get_boundaries_areaname(
-  boundary,
-  layer,
-  col_name_var,
-  chosen_constituency_list
-)
+get_boundaries_areaname(boundary, col_name_var, chosen_constituency_list)
 }
 \arguments{
 \item{boundary}{The resolution of constituencies, e.g. Census Output areas or Westminster Constituencies. Available boundaries can be found here: https://geoportal.statistics.gov.uk/}
-
-\item{layer}{This is equal to 0}
 
 \item{col_name_var}{The name of the datafield where the constituency name is held, e.g. PCON22NM for 2022 Parliamentary Constituencies}
 

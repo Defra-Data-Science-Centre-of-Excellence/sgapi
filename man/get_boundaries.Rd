@@ -5,24 +5,24 @@
 \title{Retrieve boundaries from the ONS Geography Portal
 given a valid boundary name and layer name.}
 \usage{
-get_boundaries(boundary, layer, geometry_filter = NULL)
+get_boundaries(boundary, geometry_filter = NULL)
 }
 \arguments{
 \item{boundary}{A valid boundary name given as a string}
 
-\item{layer}{A valid layer given as an integer (defaults to 0)}
-
-\item{geometry_filter}{geospatial shape or point (using latitude and longitude) Currently limited to a rectangular box or dropped pin}
+\item{geometry_filter}{geospatial shape or point (using latitude and longitude)
+Currently limited to a rectangular box or dropped pin}
 }
 \value{
-Shapefile of all constituencies in the geospatial area submitted through the geometryFilter, at the chosen ONS Boundary
-export
+Shapefile of all constituencies in the geospatial area submitted through
+the geometry_filter, at the chosen ONS Boundary export
 }
 \description{
 Retrieve boundaries from the ONS Geography Portal
 given a valid boundary name and layer name.
 }
 \examples{
-getBoundaries("Middle_Super_Output_Areas_December_2011_Boundaries/",0,"-1.282825,52.354169,0.206626,52.7106")
+get_boundaries("MSOA_Dec_2011_Boundaries_Generalised_Clipped_BGC_EW_V3_2022",
+"-1.282825,52.354169,0.206626,52.7106")
 
 }

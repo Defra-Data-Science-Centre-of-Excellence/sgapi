@@ -3,11 +3,19 @@
 \name{is_nested}
 \alias{is_nested}
 \title{Function to test if list
-is nested}
+is nested
+#'}
 \usage{
 is_nested(l)
+}
+\arguments{
+\item{l}{fragment of json file to test}
+}
+\value{
+Boolean indicating whether input was nested or not
 }
 \description{
 Function to test if list
 is nested
+#'
 }

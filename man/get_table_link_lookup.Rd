@@ -8,7 +8,8 @@ for a given NOMIS dataset ID.}
 get_table_link_lookup(api_link, col_name_1, col_name_2, col_name_3, col_name_4)
 }
 \arguments{
-\item{api_link}{Base api link which determines which table to query e.g. https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD22_CTRY22_UK_LU/FeatureServer/0/}
+\item{api_link}{Base api link which determines which table to query e.g.
+https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD22_CTRY22_UK_LU/FeatureServer/0/}
 
 \item{col_name_1}{Field in ONS table containing the constituency code of the smaller scale resolution}
 
@@ -26,6 +27,7 @@ Extract table with a lookup between two boundary scales, e.g. get a lookup betwe
 for a given NOMIS dataset ID.
 }
 \examples{
-get_table_link_lookup("https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD22_CTRY22_UK_LU/FeatureServer/0/",MSOA11CD,LAD15CD,MSOA11NM,LAD15NM)
+get_table_link_lookup("https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/
+LAD22_CTRY22_UK_LU/FeatureServer/0/",MSOA11CD,LAD15CD,MSOA11NM,LAD15NM)
 
 }

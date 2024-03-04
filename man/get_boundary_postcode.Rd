@@ -4,12 +4,10 @@
 \alias{get_boundary_postcode}
 \title{Function to extract the constituency names for the Postcodes/ latitudes and longitudes of the user's uploaded data}
 \usage{
-get_boundary_postcode(boundary, layer, column_names, geometry_filter = NULL)
+get_boundary_postcode(boundary, column_names, geometry_filter = NULL)
 }
 \arguments{
 \item{boundary}{A valid boundary from the ONS Open Geography Portal}
-
-\item{layer}{ArgGIS layer - defaults to 0}
 
 \item{column_names}{name of field containing constituency names}
 
@@ -22,5 +20,6 @@ Returns a list of constituency names corresponding to all of the coordinates sub
 Function to extract the constituency names for the Postcodes/ latitudes and longitudes of the user's uploaded data
 }
 \examples{
-get_boundary_postcode("Westminster_Parliamentary_Constituencies_Dec_2022_UK_BGC",0,"PCON22NM","-1.282825,52.354169,0.206626,52.7106")
+get_boundary_postcode("Westminster_Parliamentary_Constituencies_Dec_2022_UK_BGC",
+0,"PCON22NM","-1.282825,52.354169,0.206626,52.7106")
 }

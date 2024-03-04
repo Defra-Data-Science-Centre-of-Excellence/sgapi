@@ -9,6 +9,8 @@ table_id(name, base_url = "https://www.nomisweb.co.uk/api/v01/")
 }
 \arguments{
 \item{name}{A valid NOMIS table name given as a string}
+
+\item{base_url}{Base url for the api being queried}
 }
 \value{
 The unique table code that allows rapid querying of the data e.g. "NM_102_1"

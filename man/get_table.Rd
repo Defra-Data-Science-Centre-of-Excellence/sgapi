@@ -4,7 +4,7 @@
 \alias{get_table}
 \title{Retrieve a NOMIS table using a given table ID.}
 \usage{
-get_table(id, options = list(...), selection = NULL, uid = NULL)
+get_table(id, options, selection = NULL, uid = NULL)
 }
 \arguments{
 \item{id}{a table ID recognised by NOMIS (e.g. "NM_1_1")}
@@ -12,6 +12,8 @@ get_table(id, options = list(...), selection = NULL, uid = NULL)
 \item{options}{a list of paramaters to pass to the API query.}
 
 \item{selection}{a vector of column names to return. NULL returns all.}
+
+\item{uid}{Unique Nomis identifier to enable larger NOMIS queries - https://www.nomisweb.co.uk/}
 }
 \value{
 returns tidy dataframe of selected NOMIS table with the selected parameters and user filters applied

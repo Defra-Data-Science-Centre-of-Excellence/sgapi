@@ -6,6 +6,9 @@
 \usage{
 list_tables(base_url = "https://www.nomisweb.co.uk/api/v01/")
 }
+\arguments{
+\item{base_url}{Url of the API from which the available tables are listed}
+}
 \value{
 data frame containing
 the name and ID of each table
