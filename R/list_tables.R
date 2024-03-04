@@ -1,5 +1,6 @@
 #' List all available datasets on NOMIS
 #' 
+#' @param base_url Url of the API from which the available tables are listed
 #' @returns data frame containing
 #' the name and ID of each table
 #' 
