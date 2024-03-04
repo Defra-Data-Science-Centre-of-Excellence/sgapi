@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(sgApi)
+library(sgapi)
 
-test_check("sgApi")
+test_check("sgapi")

@@ -4,7 +4,7 @@ library(magrittr)
 test_that("A valid table ID
           should return a list
           ", {
-            expect_type(availableScales("NM_1_1"), "list")
+            expect_type(available_scales("NM_1_1"), "list")
           })
 
 # 
