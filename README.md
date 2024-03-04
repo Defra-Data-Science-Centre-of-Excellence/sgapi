@@ -1,5 +1,8 @@
 # sgApi
 
+<img width="254" alt="Defra logo" src="https://github.com/Defra-Data-Science-Centre-of-Excellence/sgapi/assets/126087299/1c7cfe02-87cd-407e-b245-991374cfc488">
+
+
 sgApi provides a simple wrapper around the NOMIS and Open Geography Portal APIs. 
 
 
@@ -10,6 +13,6 @@ The key functions are:
 3. Returns results from queries of datasets
 4. Returns overview of tables
 
-![alt text](https://https://github.com/Defra-Data-Science-Centre-of-Excellence/sgapi/blob/master/DefraLogo.png)
+
 
            
