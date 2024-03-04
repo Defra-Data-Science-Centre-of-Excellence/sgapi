@@ -1,19 +1,25 @@
-library(dplyr)
-nomisTables <- sgApi::listTables()
+#' Retrieve all available Nomis tables
+#' 
+#' @importFrom magrittr %>%
+#' 
+#' @returns A dataframe with all available table codes and names
 
-extractDataSource <- function() {
+
+library(dplyr)
+nomisTables <- list_tables()
+
+extract_data_source <- function() {
   
   sources <- data.frame()
   for (i in {
-    #sgApi::
      nomisTables %>% dplyr::filter(id != "NM_45_1") %>% dplyr::filter(id != "NM_2064_1") %>% dplyr::pull("id")
   }) {
     print(i)
     
     
-    x <- getOverview(i)
+    x <- get_overview(i)
     
-    isNested <- function(l) {
+    is_nested <- function(l) {
       stopifnot(is.list(l))
       for (i in l) {
         if (is.list(i))
@@ -24,7 +30,7 @@ extractDataSource <- function() {
     
     
     if (is.list(x$overview$contenttypes$contenttype)) {
-      if (isNested(x$overview$contenttypes$contenttype)) {
+      if (is_nested(x$overview$contenttypes$contenttype)) {
         for (j in c(1:length(x$overview$contenttypes$contenttype))) {
           print(j)
           if (x$overview$contenttypes$contenttype[[j]]$id == "sources") {
@@ -60,7 +66,7 @@ extractDataSource <- function() {
   return(sources)
 }
 
-sources <- extractDataSource()
+sources <- extract_data_source()
 
 nomisTables <- dplyr::left_join(nomisTables,sources, by = "id")
 

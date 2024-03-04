@@ -1,11 +1,11 @@
 #Generate master dataset showing all of the available boundary scales for the tables in "nomisTables.rda"
 
-createDataset <- function() {
+create_dataset <- function() {
   scales <- data.frame()
-  for (i in sgApi::nomisTables$id) {
+  for (i in nomisTables$id) {
     print(i)
     try({
-      x <- sgApi::availableScales(i)
+      x <- available_scales(i)
       if (class(x) == "character") {
         x <- data.frame(name = x,
                         value = x)
@@ -17,5 +17,5 @@ createDataset <- function() {
   return(scales)
 }
 
-scalesForEachDataset <- createDataset()
+scalesForEachDataset <- create_dataset()
 usethis::use_data(scalesForEachDataset, overwrite = TRUE)
