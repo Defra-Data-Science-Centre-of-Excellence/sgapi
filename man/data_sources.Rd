@@ -14,6 +14,6 @@ Returns a list including the name and id of each
 data source available on NOMIS.
 }
 \examples{
-dataSources()
+data_sources()
 
 }
