@@ -11,9 +11,9 @@ For ONS Open Geography
 
 More information on theses sources can be found here:
 
-[**ONS Open Geography Portal:**](https://geoportal.statistics.gov.uk/)
+[**ONS Open Geography Portal**](https://geoportal.statistics.gov.uk/)
 
-[**nomis:**](https://www.nomisweb.co.uk/)
+[**nomis**](https://www.nomisweb.co.uk/)
 
 ## Installation
      install.packages("sgapi")
