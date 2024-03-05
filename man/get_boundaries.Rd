@@ -3,12 +3,15 @@
 \name{get_boundaries}
 \alias{get_boundaries}
 \title{Retrieve boundaries from the ONS Geography Portal
-given a valid boundary name and layer name.}
+given a valid boundary name and layer name.
+If the submitted geometry is outwith the ONS Boundary,
+e.g. the geometry is in France, the function will return
+an empty shape file}
 \usage{
 get_boundaries(boundary, geometry_filter = NULL)
 }
 \arguments{
-\item{boundary}{A valid boundary name given as a string}
+\item{boundary}{A valid ONS boundary name given as a string}
 
 \item{geometry_filter}{geospatial shape or point (using latitude and longitude)
 Currently limited to a rectangular box or dropped pin}
@@ -20,6 +23,9 @@ the geometry_filter, at the chosen ONS Boundary export
 \description{
 Retrieve boundaries from the ONS Geography Portal
 given a valid boundary name and layer name.
+If the submitted geometry is outwith the ONS Boundary,
+e.g. the geometry is in France, the function will return
+an empty shape file
 }
 \examples{
 get_boundaries("MSOA_Dec_2011_Boundaries_Generalised_Clipped_BGC_EW_V3_2022",

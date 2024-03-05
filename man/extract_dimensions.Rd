@@ -10,9 +10,12 @@ extract_dimensions(id)
 \arguments{
 \item{id}{A table ID recognised by NOMIS (e.g "NM_1_1")}
 }
+\value{
+A tidy data frame of the dimensions of your chosen nomis table.
+}
 \description{
-Output will be in the form of
-a tidy data frame.
+Extract dimensions available
+for a given NOMIS table ID
 }
 \examples{
 extract_dimensions("NM_1240_1")

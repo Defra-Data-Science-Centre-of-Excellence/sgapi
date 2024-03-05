@@ -3,7 +3,9 @@
 \name{get_table_info_brief}
 \alias{get_table_info_brief}
 \title{Retrieve summary information about
-a given NOMIS dataset.}
+a given NOMIS dataset. This is
+useful as it provides the descripion
+of the dataset and any caveats}
 \usage{
 get_table_info_brief(id)
 }
@@ -15,7 +17,9 @@ A json file containing the DatasetInfo, DatasetMetadata, Dimensions (variables),
 }
 \description{
 Retrieve summary information about
-a given NOMIS dataset.
+a given NOMIS dataset. This is
+useful as it provides the descripion
+of the dataset and any caveats
 }
 \examples{
 get_table_info_brief("NM_1_1")
