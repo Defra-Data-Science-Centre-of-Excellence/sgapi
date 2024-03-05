@@ -7,7 +7,7 @@
 #' 
 #' @param id A valid NOMIS table id given as a string, e.g. NM_46_1
 #' 
-#' @examples get_table_info_brief("NM_1_1")
+#' @examples get_table_info_brief("N_1_1")
 #' 
 #' @returns A json file containing the DatasetInfo, DatasetMetadata, Dimensions (variables), Dataset Contact,Units
 #' @export
@@ -21,6 +21,7 @@ get_table_info_brief <- function(id){
                                    id,
                                   ".overview.json?select=DatasetInfo,DatasetMetadata,Dimensions,Codes-workforce,Contact,Units")) %>%
       httr::content()
+      assert_function(length(raw_info)==2L,"Chosen Nomis table id does not exist, see column 'id' in sgapi::nomisTables for available table ids")
     return(raw_info)
     },
   error = function(e) {

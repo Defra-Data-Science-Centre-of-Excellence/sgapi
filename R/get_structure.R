@@ -20,6 +20,7 @@ get_structure <- function(id,dim) {
                       dim,
                       ".def.sdmx.json")) %>%
       httr::content()
+      assert_function(length(raw_data)==2L,"Chosen Nomis table id or dimension does not exist, see column 'id' in sgapi::nomisTables for available table ids")
       return(raw_data)
     },
     error = function(e) {

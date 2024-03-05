@@ -18,6 +18,7 @@ get_overview <- function(id) {
                        id,
                        ".overview.json")) %>%
                        httr::content()
+      assert_function(length(raw_data)==2L,"Chosen Nomis table id does not exist, see column 'id' in sgapi::nomisTables for available table ids. If table is recorded in sgapi::nomisTables, contact nomis to check for any know issues with the dataset")
       return(raw_data)
     },
     error = function(e) {
