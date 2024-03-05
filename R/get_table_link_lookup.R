@@ -4,20 +4,22 @@
 #' @import dplyr
 #' @importFrom magrittr %>%
 #' 
-#' @param api_link Base api link which determines which table to query e.g. 
-#' https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD22_CTRY22_UK_LU/FeatureServer/0/
+#' @param lookup_table A valid ONS lookup table
 #' @param col_name_1 Field in ONS table containing the constituency code of the smaller scale resolution
 #' @param col_name_2 Field in ONS table containing the constituency code of the larger scale resolution
 #' @param col_name_3 Field in ONS table containing the constituency name of the smaller scale resolution
 #' @param col_name_4 Field in ONS table containing the constituency name of the larger scale resolution
 #' 
 #' @examples 
-#' get_table_link_lookup("https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/MSOA21_LAD23_EW_LU/FeatureServer/0/","MSOA21CD","LAD23CD","MSOA21NM","LAD23NM")
+#' get_table_link_lookup("MSOA21_LAD23_EW_LU","MSOA21CD","LAD23CD","MSOA21NM","LAD23NM")
 #' 
 #' @returns A dataframe lookup between two chosen boundary resolutions
 #' @export
 
-get_table_link_lookup <- function(api_link,col_name_1,col_name_2,col_name_3,col_name_4){
+get_table_link_lookup <- function(lookup_table,col_name_1,col_name_2,col_name_3,col_name_4){
+  
+  assert_function(grepl("\\s",lookup_table),"Boundary must be not contain any spaces, see https://geoportal.statistics.gov.uk/search?q=Boundary&sort=Date%20Created%7Ccreated%7Cdesc for available boundaries")
+  api_link <- paste0("https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/",lookup_table,"/FeatureServer/0/")
   queries <- "query?where=1%3D1&outFields="
 
   #Check whether the two scales are the same- this is the case for single constituency lookups
@@ -32,7 +34,6 @@ get_table_link_lookup <- function(api_link,col_name_1,col_name_2,col_name_3,col_
   x_c <- httr::GET(paste0(
     api_link_count))
   raw_count <- httr::content(x_c)
-  #print(raw_count)
 
 
   #The restful/esri API has a limit of 32,000 rows that it will return.
@@ -66,7 +67,7 @@ get_table_link_lookup <- function(api_link,col_name_1,col_name_2,col_name_3,col_
       available_datasets <- rbind(available_datasets,
                                  data.frame(
                                    con_name_large = raw_data[["features"]][[j]][["attributes"]][[col_name_1]],
-                                   #con_name_small = raw_data[["features"]][[j]][["attributes"]][[col_name_2]],
+                                   con_name_small = raw_data[["features"]][[j]][["attributes"]][[col_name_2]],
                                    con_code_large = raw_data[["features"]][[j]][["attributes"]][[col_name_3]],
                                    con_code_small = raw_data[["features"]][[j]][["attributes"]][[col_name_4]]
                                  )
@@ -96,7 +97,7 @@ get_table_link_lookup <- function(api_link,col_name_1,col_name_2,col_name_3,col_
     available_datasets <- rbind(available_datasets,
                                data.frame(
                                  con_name_large = raw_data[["features"]][[j]][["attributes"]][[col_name_1]],
-                                 #con_name_small = raw_data[["features"]][[j]][["attributes"]][[col_name_2]], # No longer needed - removed to save space
+                                 con_name_small = raw_data[["features"]][[j]][["attributes"]][[col_name_2]], # No longer needed - removed to save space
                                  con_code_large = raw_data[["features"]][[j]][["attributes"]][[col_name_3]],
                                  con_code_small = raw_data[["features"]][[j]][["attributes"]][[col_name_4]]
                                )
@@ -107,7 +108,6 @@ get_table_link_lookup <- function(api_link,col_name_1,col_name_2,col_name_3,col_
     num_loops = ceiling(raw_count/32000)
     for (n in 1:num_loops){
     off_set_val <- (n-1)*32000
-    #print(off_set_val)
     if ((col_name_1 == col_name_2) & (col_name_3 == col_name_4)){
       api_link_full <- paste0(api_link,queries,col_name_1,",",col_name_3,"&returnGeometry=false&resultType=standard&resultOffset=",off_set_val,"&outSR=4326&f=json")
     }
@@ -127,7 +127,7 @@ get_table_link_lookup <- function(api_link,col_name_1,col_name_2,col_name_3,col_
       available_datasets <- rbind(available_datasets,
                                  data.frame(
                                    con_name_large = raw_data[["features"]][[j]][["attributes"]][[col_name_1]],
-                                   #con_name_small = raw_data[["features"]][[j]][["attributes"]][[col_name_2]],
+                                   con_name_small = raw_data[["features"]][[j]][["attributes"]][[col_name_2]],
                                    con_code_large = raw_data[["features"]][[j]][["attributes"]][[col_name_3]],
                                    con_code_small = raw_data[["features"]][[j]][["attributes"]][[col_name_4]]
                                  )

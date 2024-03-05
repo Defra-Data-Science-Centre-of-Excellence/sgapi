@@ -2,18 +2,16 @@
 #' for a given NOMIS table ID
 #' 
 #' 
-#' Output will be in the form of
-#' a tidy data frame.
-#' 
 #' @param id A table ID recognised by NOMIS (e.g "NM_1_1")
 #' 
 #' @examples extract_dimensions("NM_1240_1")
 #' @export
+#' @returns A tidy data frame of the dimensions of your chosen nomis table.
 
 #The dimensions refer to the different columns of the table, i.e. year of interest, total claimants, occupation, etc.
 extract_dimensions <- function(id) {
   dimensions_overview <- get_overview(id)$overview$dimensions$dimension
-  assert_function(is.null(dimensions_overview), "Invalid table identifier - use getTables() to generate a list of available tables")
+  assert_function(is.null(dimensions_overview), "Invalid table identifier - use list_tables() to generate a list of available tables")
   output <- c()
   # LOOP OVER EACH DIMENSION
 

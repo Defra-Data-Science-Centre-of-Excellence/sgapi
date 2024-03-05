@@ -14,12 +14,19 @@ get_boundaries_areaname <- function(boundary,
                                     col_name_var,
                                     chosen_constituency_list) {
   
+  assert_function(grepl("\\s",boundary),"Boundary must be not contain any spaces, see https://geoportal.statistics.gov.uk/search?q=Boundary&sort=Date%20Created%7Ccreated%7Cdesc for available boundaries")
   layer=0
-
   output_fields="*"
   
   base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/"
   api_list_constituencies = ''
+  
+  num_constituencies <- length(chosen_constituency_list)
+  tryCatch(
+    {
+  #API query fails if there are too many options in the filter (i.e. too many area names)
+  #Therefore, query is broken down into smaller ones for large lists of area names 
+  if (num_constituencies<=30){
   for (i in 1:length(chosen_constituency_list)) {
     if (i < length(chosen_constituency_list)) {
       api_list_constituencies <- paste0(api_list_constituencies,chosen_constituency_list[i],"'%20OR%20",col_name_var,"%20%3D%20'")}
@@ -43,5 +50,50 @@ get_boundaries_areaname <- function(boundary,
     "&outSR=4326&f=geojson"
   )
   spatial_object <- sf::st_read(full_api_link)
+  }
+  else {
+    #For large query loop through smaller constituent queries
+    spatial_object <- sf::st_set_crs(sf::st_sf(sf::st_sfc()), value = "WGS84")
+    num_loops = ceiling(num_constituencies/30)
+    for (n in 1:num_loops){
+      api_list_constituencies = ''
+      start_int=((n-1)*30)+1
+      end_int=((n-1)*30)+30
+      for (i in start_int:end_int) {
+        if (i < end_int) {
+          api_list_constituencies <- paste0(api_list_constituencies,chosen_constituency_list[i],"'%20OR%20",col_name_var,"%20%3D%20'")}
+        else {
+          api_list_constituencies <- paste0(api_list_constituencies,chosen_constituency_list[i],"')%20")
+        }
+      }
+      
+      full_api_link <-paste0(
+        base_url,
+        boundary,
+        "/FeatureServer/",
+        layer,
+        "/query?where=%20(",
+        col_name_var,
+        "%20%3D%20'",
+        api_list_constituencies,
+        "&",
+        "outFields=",
+        output_fields,
+        "&outSR=4326&f=geojson"
+      )
+      new_sf <- sf::st_read(full_api_link)
+    
+    #Bind together spatial objects of smaller queries 
+    spatial_object <- rbind(spatial_object, new_sf)
+    }
+  }
   return(spatial_object)
+  },
+  error = function(e) {
+    message("Error in column name for chosen boundary, or in the list of area names. Check your chosen boundary scale on https://geoportal.statistics.gov.uk/")
+    print(e)
+  }
+  
+  )
+
 }

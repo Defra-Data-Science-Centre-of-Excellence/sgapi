@@ -57,8 +57,9 @@ get_table <- function(id,
       uid_link))
   }
   assert_function(raw_data$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_data$status_code))
-
-  return(httr::content(raw_data))
-  
+  output_data <- httr::content(raw_data)
+  if (nrow(output_data)==25000){warning("Query has been truncated at 20,000 rows. Use a nomis uid to return the full table")}
+  return(output_data)
 }
+
 

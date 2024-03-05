@@ -10,15 +10,21 @@
 #' @export
 
 get_structure <- function(id,dim) {
-  
-  base_url = "https://www.nomisweb.co.uk/api/v01/"
-  raw_data <- httr::GET(paste0(base_url,
-                   "dataset/",
-                   id,
-                   "/",
-                   dim,
-                   ".def.sdmx.json")) %>%
-    httr::content()
-  #assert_function(raw_data$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_data$status_code))
-  return(raw_data)
+  tryCatch(
+    {
+      base_url = "https://www.nomisweb.co.uk/api/v01/"
+      raw_data <- httr::GET(paste0(base_url,
+                      "dataset/",
+                      id,
+                      "/",
+                      dim,
+                      ".def.sdmx.json")) %>%
+      httr::content()
+      return(raw_data)
+    },
+    error = function(e) {
+      message("Chosen Nomis table id or dimension does not exist, see column 'id' in sgapi::nomisTables for available table ids")
+      print(e)
+  }
+  )
 }

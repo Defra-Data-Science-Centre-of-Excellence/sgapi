@@ -1,7 +1,10 @@
 #' Retrieve boundaries from the ONS Geography Portal
-#' given a valid boundary name and layer name.
+#' given a valid boundary name and layer name. 
+#' If the submitted geometry is outwith the ONS Boundary,
+#' e.g. the geometry is in France, the function will return 
+#' an empty shape file
 #'
-#' @param boundary A valid boundary name given as a string
+#' @param boundary A valid ONS boundary name given as a string
 #' @param geometry_filter geospatial shape or point (using latitude and longitude) 
 #' Currently limited to a rectangular box or dropped pin
 #'
@@ -19,6 +22,7 @@ get_boundaries <- function(boundary,
 
   output_fields="*"
   layer=0
+  assert_function(grepl("\\s",boundary),"Boundary must be not contain any spaces, see https://geoportal.statistics.gov.uk/search?q=Boundary&sort=Date%20Created%7Ccreated%7Cdesc for available boundaries")
   
   if (is.null(geometry_filter)) {
     spatial_object <- sf::st_read(
@@ -66,7 +70,7 @@ get_boundaries <- function(boundary,
       }
     }
   }
-  
+  if(length(spatial_object)==0){warning("OUT OF BOUNDS. The selected geometry does not contain any areas in chosen boundary scale")}
   return(spatial_object)
 }
 

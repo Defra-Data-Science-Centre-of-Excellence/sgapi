@@ -1,5 +1,7 @@
 #' Retrieve summary information about
-#' a given NOMIS dataset. 
+#' a given NOMIS dataset. This is
+#' useful as it provides the descripion 
+#' of the dataset and any caveats
 #' 
 #' @importFrom magrittr %>%
 #' 
@@ -11,13 +13,20 @@
 #' @export
 
 get_table_info_brief <- function(id){
-  
-  base_url = "https://www.nomisweb.co.uk/api/v01/"
-  raw_info <- httr::GET(paste0(base_url,
-                              "dataset/",
-                              id,
-                              ".overview.json?select=DatasetInfo,DatasetMetadata,Dimensions,Codes-workforce,Contact,Units")) %>%
-    httr::content()
-  #assert_function(raw_info$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_info$status_code))
-  return(raw_info)
+  tryCatch(
+    {
+      base_url = "https://www.nomisweb.co.uk/api/v01/"
+      raw_info <- httr::GET(paste0(base_url,
+                                  "dataset/",
+                                   id,
+                                  ".overview.json?select=DatasetInfo,DatasetMetadata,Dimensions,Codes-workforce,Contact,Units")) %>%
+      httr::content()
+    return(raw_info)
+    },
+  error = function(e) {
+    message("Chosen Nomis table id does not exist, see column 'id' in sgapi::nomisTables for available table ids")
+    print(e)
+  }
+  )
+
 }
