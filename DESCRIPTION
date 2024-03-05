@@ -1,5 +1,5 @@
 Package: sgapi
-Title: Functions to Aid Querying nomis and ONS Open Geography APIs
+Title: Functions to Aid Querying Nomis and ONS Open Geography APIs
 Version: 1.0.0
 Authors@R: 
     c(person("Andrew", "Christy", , "OR_Hub@defra.gov.uk", role = c("aut", "cre")),

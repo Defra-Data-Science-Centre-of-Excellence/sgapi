@@ -20,9 +20,18 @@ get_table_id <- function(name,
       "dataset/def.sdmx.json?search=name-*",
       name,
       "*"
-    ))
-  #print(raw_data$overview$)
-  #assert_function(raw_data$status_code>=400L, paste0("API has failed, check that the 'name' of the table is spelled correctly. The status code is: ",raw_data$status_code))
-  assert_function(is.null(raw_data$structure$keyfamilies),"No tables with chosen name")
-  return(httr::content(raw_data)$structure$keyfamilies$keyfamily[[1]]$id)
+    )) %>%
+    httr::content()
+  assert_function(length(raw_data$structure$keyfamilies)==2L,"No tables with chosen name")
+  
+  num_files=length(raw_data$structure$keyfamilies$keyfamily)
+  message(paste0(num_files," table names contain your selected charater string"))
+  d_rows <- data.frame()
+  for (i in seq_along(raw_data$structure$keyfamilies$keyfamily)) {
+    d_row <- data.frame(dn = i,
+                        n = raw_data$structure$keyfamilies$keyfamily[[i]]$id,
+                        v = raw_data$structure$keyfamilies$keyfamily[[i]]$name$value)
+    d_rows <- dplyr::bind_rows(d_rows, d_row)
+  }
+  return(d_rows)
 }

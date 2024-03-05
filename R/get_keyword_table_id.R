@@ -18,9 +18,10 @@ get_keyword_table_id <- function(usr_keyword){
   
   
   #validation check
-  assert_function(is.null(raw_data$structure$keyfamilies),"No tables with chosen keyword")
+  assert_function(length(raw_data$structure$keyfamilies)==2L,"No tables with chosen keyword")
   
   num_files=length(raw_data$structure$keyfamilies$keyfamily)
+  message(paste0(num_files," tables have your selected keyword"))
   d_rows <- data.frame()
   for (i in seq_along(raw_data$structure$keyfamilies$keyfamily)) {
       d_row <- data.frame(dn = i,
@@ -30,6 +31,4 @@ get_keyword_table_id <- function(usr_keyword){
   }
   return(d_rows)
 }
-
-
   

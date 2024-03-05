@@ -4,10 +4,7 @@
 \alias{get_keyword_table_id}
 \title{Function to return list}
 \usage{
-get_keyword_table_id(
-  usr_keyword,
-  base_url = "https://www.nomisweb.co.uk/api/v01/"
-)
+get_keyword_table_id(usr_keyword)
 }
 \arguments{
 \item{usr_keyword}{Keyword to search nomis tables for}

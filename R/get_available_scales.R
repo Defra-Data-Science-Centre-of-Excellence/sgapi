@@ -2,6 +2,7 @@
 #' for a given NOMIS dataset ID. 
 #' 
 #' @importFrom magrittr %>%
+#' @importFrom methods is
 #' 
 #' @param id A valid NOMIS table id given as a string
 #' 
