@@ -25,7 +25,7 @@ Users must abide by the licensing agreements when publishing information extract
 
 1. **get_boundaries.R** - returns shapefile of areas in contact with a user selected rectangular area, at your chosen ONS resolution
 2. **get_boundaries_areanames.R** - returns the shapefiles for all areas input into the function.
-3. **extract_dimensions.R** - for a chosen nomis table this function returns all of the parameters which can be filtered
+3. **get_table_dimensions.R** - for a chosen nomis table this function returns all of the parameters which can be filtered
 4. **get_table.R** - extracts a dataframe from the chosen nomis table for your selected area and selected filters
 5. **get_table_link_lookup.R** - retrieves a dataframe with the lookup table between two resolutions, taken from ONS Open Geography lookup tables
 6. **get_table_info_brief.R** - returns summary information for the selected nomis table, including contact details, data description and table status
@@ -34,8 +34,8 @@ Users must abide by the licensing agreements when publishing information extract
 
 1. **list_boundaries.R** - lists all boundary masks available on the ONS Open Geography
 2. **list_tables.R** - lists all tables, including their name and reference code, from nomis
-3. **available_scales.R** - provides list of available geographical resolutions for your chosen nomis table
-4. **data_sources.R** - lists all available data sources on nomis
+3. **get_available_scales.R** - provides list of available geographical resolutions for your chosen nomis table
+4. **list_data_sources.R** - lists all available data sources on nomis
 
 ## Additional API Information
 

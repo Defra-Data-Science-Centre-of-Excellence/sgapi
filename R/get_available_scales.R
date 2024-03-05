@@ -6,13 +6,22 @@
 #' @param id A valid NOMIS table id given as a string
 #' 
 #' @examples 
-#' available_scales("NM_1003_1")
+#' get_available_scales("NM_1003_1")
 #' 
 #' @return A tidy dataframe listing the Geographical scales available for the NOMIS table selected. E.g. Many census datasets are available at MSOA and LSOA resolutions but not at Regional level
 #' 
 #' @export
  
-available_scales <- function(id) {
+get_available_scales <- function(id) {
+  
+  is_nested <- function(l) {
+    stopifnot(is.list(l))
+    for (i in l) {
+      if (is.list(i))
+        return(TRUE)
+    }
+    return(FALSE)
+  }
   
   base_url = "https://www.nomisweb.co.uk/api/v01/"
   

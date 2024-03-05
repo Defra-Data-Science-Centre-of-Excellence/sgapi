@@ -5,12 +5,12 @@
 #' @importFrom magrittr %>%
 #'
 #' @examples
-#' data_sources()
+#' list_data_sources()
 #' 
 #' @returns List of all availbale datasources accessible through the Nomis API system. More information can be found here: https://www.nomisweb.co.uk/api/v01/help
 #' @export
 
-data_sources <- function() {
+list_data_sources <- function() {
   y <-
     httr::GET("https://www.nomisweb.co.uk/api/v01/contenttype/sources.json") %>%
     httr::content()
@@ -27,9 +27,5 @@ data_sources <- function() {
     sources <- dplyr::bind_rows(sources, source)
   }
   
-  # sources <- sources %>%
-  #   dplyr::mutate(sourceId = dplyr::case_when(sourceId == "census" ~ "census-release",
-  #                                             sourceId == "dwp" ~ "dwp-release",
-  #                                             TRUE ~ sourceId))
   return(sources)
 }
