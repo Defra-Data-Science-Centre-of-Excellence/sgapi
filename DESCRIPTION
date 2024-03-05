@@ -1,11 +1,11 @@
 Package: sgapi
-Title: Functions to Aid Querying Nomis API
+Title: Functions to Aid Querying nomis and ONS Open Geography APIs
 Version: 1.0.0
 Authors@R: 
     c(person("Andrew", "Christy", , "OR_Hub@defra.gov.uk", role = c("aut", "cre")),
            person("James","Macpherson", , "James.macpherson@defra.gov.uk", role = "aut"),
            person("Hadyn","Jenkins", role = "aut" ))
-Description: Functions to facilitate extraction of geospatial data from ONS Open Geography and Nomis.
+Description: Functions to facilitate extraction of geospatial data from ONS Open Geography and nomis. Simplifies process of querying nomis datasets and extracting desired datasets in dataframe format.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
