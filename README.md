@@ -3,17 +3,15 @@
 
 ## Overview
 
-sgapi provides a simple wrapper around the nomis and Open Geography Portal APIs, aiding geospatial analysis of the population, labour market, and social measures. The authors thank ONS for their work in maintaining both NOMIS and Open Geography Portal, without them this work would not be possible.
-
-Users must abide by the licensing agreements when publishing information extracted from these ONS sources, for more copyright information, see the [copyright](##copyright-and-permissions) section. 
-
-For ONS Open Geography 
+The sgapi package provides a simple wrapper around the nomis and Open Geography Portal APIs, aiding geospatial analysis of the population, labour market, and social measures. The authors thank ONS for their work in maintaining both NOMIS and Open Geography Portal, without them this work would not be possible.
 
 More information on theses sources can be found here:
 
 [**ONS Open Geography Portal**](https://geoportal.statistics.gov.uk/)
 
 [**nomis**](https://www.nomisweb.co.uk/)
+
+Users must abide by the licensing agreements when publishing information extracted from these ONS sources, for more copyright information, see the [copyright](##copyright-and-permissions) section. 
 
 ## Installation
      install.packages("sgapi")
