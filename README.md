@@ -40,9 +40,9 @@ More information on theses sources can be found here:
 
 ## Additional API Information
 
-[**ONS Open Geography Portal:**] (https://developers.arcgis.com/rest/services-reference/enterprise/query-feature-service-layer-.htm)
+[**ONS Open Geography Portal**](https://developers.arcgis.com/rest/services-reference/enterprise/query-feature-service-layer-.htm)
 
-[**nomis:**] (https://www.nomisweb.co.uk/api/v01/help)
+[**nomis**](https://www.nomisweb.co.uk/api/v01/help)
 
 ## Copyright and Permissions
 
