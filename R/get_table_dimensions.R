@@ -4,7 +4,7 @@
 #' 
 #' @param id A table ID recognised by NOMIS (e.g "NM_1_1")
 #' 
-#' @examples get_table_dimensions("NM_1240_1")
+#' @examples get_table_dimensions(id="NM_1240_1")
 #' @export
 #' @returns A tidy data frame of the dimensions of your chosen nomis table.
 

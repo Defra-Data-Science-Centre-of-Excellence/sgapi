@@ -7,7 +7,7 @@
 #' @param id A valid NOMIS table id given as a string
 #' 
 #' @examples 
-#' get_available_scales("NM_1003_1")
+#' get_available_scales(id="NM_1003_1")
 #' 
 #' @return A tidy dataframe listing the Geographical scales available for the NOMIS table selected. E.g. Many census datasets are available at MSOA and LSOA resolutions but not at Regional level
 #' 

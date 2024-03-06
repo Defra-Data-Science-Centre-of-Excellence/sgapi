@@ -5,7 +5,7 @@
 #' @param id A valid NOMIS id.
 #' 
 #' @examples 
-#' get_overview("NM_1_1")
+#' get_overview(id="NM_1_1")
 #' @returns json file with overview information of chosen data set - including description of the dataset, last update date, contact for the data
 #' @export
 

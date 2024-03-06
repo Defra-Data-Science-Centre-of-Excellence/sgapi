@@ -9,8 +9,8 @@
 #' Currently limited to a rectangular box or dropped pin
 #'
 #' @examples 
-#' get_boundaries("MSOA_Dec_2011_Boundaries_Generalised_Clipped_BGC_EW_V3_2022",
-#' "-1.282825,52.354169,0.206626,52.7106")
+#' get_boundaries(boundary="MSOA_Dec_2011_Boundaries_Generalised_Clipped_BGC_EW_V3_2022",
+#' geometry_filter="-1.282825,52.354169,0.206626,52.7106")
 #' 
 #' @returns Shapefile of all constituencies in the geospatial area submitted through 
 #' the geometry_filter, at the chosen ONS Boundary export
@@ -23,6 +23,8 @@ get_boundaries <- function(boundary,
   output_fields="*"
   layer=0
   assert_function(grepl("\\s",boundary),"Boundary must be not contain any spaces, see https://geoportal.statistics.gov.uk/search?q=Boundary&sort=Date%20Created%7Ccreated%7Cdesc for available boundaries")
+  tryCatch(
+    {  
   
   if (is.null(geometry_filter)) {
     spatial_object <- sf::st_read(
@@ -70,7 +72,14 @@ get_boundaries <- function(boundary,
       }
     }
   }
-  if(length(spatial_object)==0){warning("OUT OF BOUNDS. The selected geometry does not contain any areas in chosen boundary scale")}
+
+  if(length(spatial_object)==1L){warning("OUT OF BOUNDS. The selected geometry does not contain any areas in chosen boundary scale")}
   return(spatial_object)
+    },
+  error = function(e) {
+    message("Error in boundary name or geometry filter, check your chosen boundary scale on https://geoportal.statistics.gov.uk/")
+    print(e)
+    }   
+  )
 }
 

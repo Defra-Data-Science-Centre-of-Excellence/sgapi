@@ -7,7 +7,7 @@
 #' 
 #' @param id A valid NOMIS table id given as a string, e.g. NM_46_1
 #' 
-#' @examples get_table_info_brief("N_1_1")
+#' @examples get_table_info_brief(id="NM_1_1")
 #' 
 #' @returns A json file containing the DatasetInfo, DatasetMetadata, Dimensions (variables), Dataset Contact,Units
 #' @export

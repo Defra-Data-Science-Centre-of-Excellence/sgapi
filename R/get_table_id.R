@@ -6,14 +6,13 @@
 #' 
 #' 
 #' @param name A valid NOMIS table name given as a string
-#' @param base_url Base url for the api being queried
 #' 
-#' @examples get_table_id("RM003 - Accommodation type by type of central heating in household by tenure")
+#' @examples get_table_id(name="RM003 - Accommodation type by type of central heating in household by tenure")
 #' @returns The unique table code that allows rapid querying of the data e.g. "NM_102_1"
 #' @export
 
-get_table_id <- function(name,
-                    base_url = "https://www.nomisweb.co.uk/api/v01/"){
+get_table_id <- function(name){
+  base_url <- "https://www.nomisweb.co.uk/api/v01/"
   raw_data <- httr::GET(
     paste0(
       base_url,

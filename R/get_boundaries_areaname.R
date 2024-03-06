@@ -4,8 +4,8 @@
 #' @param col_name_var The name of the datafield where the constituency name is held, e.g. PCON22NM for 2022 Parliamentary Constituencies
 #' @param chosen_constituency_list List of chosen constituencies
 #' 
-#' @examples get_boundaries_areaname("Local_Authority_Districts_December_2022_UK_BGC_V2","LAD22NM", 
-#' c("Westminster","Tower Hamlets","County Durham"))
+#' @examples get_boundaries_areaname(boundary="Local_Authority_Districts_December_2022_UK_BGC_V2",
+#' col_name_var="LAD22NM",chosen_constituency_list=c("Westminster","Tower Hamlets","County Durham"))
 #' 
 #' @returns A geojson spatial file of the constituencies submitted to the function
 #' @export
@@ -87,6 +87,7 @@ get_boundaries_areaname <- function(boundary,
     spatial_object <- rbind(spatial_object, new_sf)
     }
   }
+  if(length(spatial_object)==1L){warning("OUT OF BOUNDS. The selected geometry does not contain any areas in chosen boundary scale")}
   return(spatial_object)
   },
   error = function(e) {
