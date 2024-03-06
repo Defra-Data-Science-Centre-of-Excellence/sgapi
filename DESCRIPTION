@@ -5,7 +5,7 @@ Authors@R:
     c(person("Andrew", "Christy", , "OR_Hub@defra.gov.uk", role = c("aut", "cre")),
            person("James","Macpherson", , "James.macpherson@defra.gov.uk", role = "aut"),
            person("Hadyn","Jenkins", role = "aut" ))
-Description: Functions to facilitate extraction of geospatial data from ONS Open Geography and nomis. Simplifies process of querying nomis datasets and extracting desired datasets in dataframe format.
+Description: Functions to facilitate extraction of geospatial data from ONS Open Geography and nomis. Simplifies process of querying nomis datasets <https://www.nomisweb.co.uk/> and extracting desired datasets in dataframe format. Includes functions to extract area shapefiles at chosen resolution from ONS Open Geography <https://geoportal.statistics.gov.uk/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
