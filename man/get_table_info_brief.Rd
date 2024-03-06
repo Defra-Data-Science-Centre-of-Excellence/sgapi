@@ -22,6 +22,6 @@ useful as it provides the descripion
 of the dataset and any caveats
 }
 \examples{
-get_table_info_brief("N_1_1")
+get_table_info_brief(id="NM_1_1")
 
 }

@@ -32,6 +32,7 @@ Extract table with a lookup between two boundary scales, e.g. get a lookup betwe
 for a given NOMIS dataset ID.
 }
 \examples{
-get_table_link_lookup("MSOA21_LAD23_EW_LU","MSOA21CD","LAD23CD","MSOA21NM","LAD23NM")
+get_table_link_lookup(lookup_table="MSOA21_LAD23_EW_LU",col_name_1="MSOA21CD",
+col_name_2="LAD23CD",col_name_3="MSOA21NM",col_name_4="LAD23NM")
 
 }

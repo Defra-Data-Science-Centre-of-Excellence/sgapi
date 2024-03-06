@@ -18,5 +18,5 @@ Extract dimensions available
 for a given NOMIS table ID
 }
 \examples{
-get_table_dimensions("NM_1240_1")
+get_table_dimensions(id="NM_1240_1")
 }

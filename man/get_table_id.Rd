@@ -5,12 +5,10 @@
 \title{Extract unique table id - this is used to
 rapidly query census data in other functions}
 \usage{
-get_table_id(name, base_url = "https://www.nomisweb.co.uk/api/v01/")
+get_table_id(name)
 }
 \arguments{
 \item{name}{A valid NOMIS table name given as a string}
-
-\item{base_url}{Base url for the api being queried}
 }
 \value{
 The unique table code that allows rapid querying of the data e.g. "NM_102_1"
@@ -20,5 +18,5 @@ Extract unique table id - this is used to
 rapidly query census data in other functions
 }
 \examples{
-get_table_id("RM003 - Accommodation type by type of central heating in household by tenure")
+get_table_id(name="RM003 - Accommodation type by type of central heating in household by tenure")
 }

@@ -18,5 +18,5 @@ Retrieve dataset overview
 for a valid NOMIS table id
 }
 \examples{
-get_overview("NM_1_1")
+get_overview(id="NM_1_1")
 }

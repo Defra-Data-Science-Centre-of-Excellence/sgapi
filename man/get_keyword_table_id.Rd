@@ -16,5 +16,5 @@ A tidy dataframe of all nomis tables and their ids, which contain the chosen key
 Function to return list
 }
 \examples{
-get_keyword_table_id("industry")
+get_keyword_table_id(usr_keyword="industry")
 }

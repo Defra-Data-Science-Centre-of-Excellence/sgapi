@@ -17,5 +17,5 @@ Retrieve dataset overview
 for a valid NOMIS table id
 }
 \examples{
-get_structure("NM_187_1","industry")
+get_structure(id="NM_187_1",dim="industry")
 }
