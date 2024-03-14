@@ -2,10 +2,8 @@
 % Please edit documentation in R/get_table_id.R
 \name{get_table_id}
 \alias{get_table_id}
-\title{Extract unique table ids  for tables containing given name in their title
-\itemize{
-\item these unique table ids are used to rapidly query census data in other functions
-}}
+\title{Extract unique table ids  for tables containing given name in their title,
+these unique table ids are used to rapidly query census data in other functions}
 \usage{
 get_table_id(name)
 }
@@ -13,14 +11,13 @@ get_table_id(name)
 \item{name}{A valid NOMIS table name given as a string}
 }
 \value{
-The nomis table code(s) for all tables containing the selected name, that allows rapid querying of the data e.g. "NM_102_1"
+The nomis table codes for all tables containing the selected name, that allows rapid querying of the data e.g. "NM_102_1"
 }
 \description{
-Extract unique table ids  for tables containing given name in their title
-\itemize{
-\item these unique table ids are used to rapidly query census data in other functions
-}
+Extract unique table ids  for tables containing given name in their title,
+these unique table ids are used to rapidly query census data in other functions
 }
 \examples{
 get_table_id(name="employment")
+
 }

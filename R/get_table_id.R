@@ -1,14 +1,14 @@
-#' Extract unique table ids  for tables containing given name in their title
-#' - these unique table ids are used to rapidly query census data in other functions
+#' Extract unique table ids  for tables containing given name in their title, 
+#' these unique table ids are used to rapidly query census data in other functions
 #' 
 #' @import xml2
-#' 
-#' 
 #' 
 #' @param name A valid NOMIS table name given as a string
 #' 
 #' @examples get_table_id(name="employment")
-#' @returns The nomis table code(s) for all tables containing the selected name, that allows rapid querying of the data e.g. "NM_102_1"
+#' 
+#' @returns The nomis table codes for all tables containing the selected name, that allows rapid querying of the data e.g. "NM_102_1"
+#' 
 #' @export
 
 get_table_id <- function(name){

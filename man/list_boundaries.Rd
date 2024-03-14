@@ -3,7 +3,7 @@
 \name{list_boundaries}
 \alias{list_boundaries}
 \title{Retrieve all available ArcGIS boundary layers
-from the ONS Open Geography Portal}
+from the ONS Open Geography Portal using list_boundaries()}
 \usage{
 list_boundaries()
 }
@@ -12,8 +12,5 @@ list of avvailable boundary layers on ArcGIS
 }
 \description{
 Retrieve all available ArcGIS boundary layers
-from the ONS Open Geography Portal
-}
-\examples{
-list_boundaries()
+from the ONS Open Geography Portal using list_boundaries()
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_tables.R
 \name{list_tables}
 \alias{list_tables}
-\title{List all available datasets on NOMIS}
+\title{List all available datasets on NOMIS using list_tables()}
 \usage{
 list_tables(base_url = "https://www.nomisweb.co.uk/api/v01/")
 }
@@ -14,8 +14,5 @@ data frame containing
 the name and ID of each table
 }
 \description{
-List all available datasets on NOMIS
-}
-\examples{
-list_tables()
+List all available datasets on NOMIS using list_tables()
 }
