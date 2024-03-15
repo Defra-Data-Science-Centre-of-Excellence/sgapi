@@ -1,13 +1,18 @@
-#' Return a list of data sources available on NOMIS
+#' @title List 'nomis' Data Sources
+#' 
+#' @description
+#' Return a list of the data sources available on 'nomis'.
 #'
-#' Returns a list including the name and id of each
-#' data source available on NOMIS.
+#' @description
+#' Returns a list including the name, id and description of each
+#' data source available on 'nomis'. More information can be found here: https://www.nomisweb.co.uk/api/v01/help
+#' 
 #' @importFrom magrittr %>%
 #'
 #' @examples
 #' list_data_sources()
 #' 
-#' @returns List of all availbale datasources accessible through the Nomis API system. More information can be found here: https://www.nomisweb.co.uk/api/v01/help
+#' @returns A tidy dataframe of all available data sources accessible through the 'nomis' API system. 
 #' @export
 
 list_data_sources <- function() {

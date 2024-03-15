@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_function.R
 \name{assert_function}
 \alias{assert_function}
-\title{Evaluate conditrion and return error message if confdition not satisfied.}
+\title{Escape Function in Case of Errors}
 \usage{
 assert_function(condition, msg)
 }
@@ -12,10 +12,10 @@ assert_function(condition, msg)
 \item{msg}{the error message returned if the condition is not met.}
 }
 \value{
-returns tidy dataframe of selected NOMIS table with the selected parameters and user filters applied
+No return value, called for side effects.
 }
 \description{
-Evaluate conditrion and return error message if confdition not satisfied.
+Evaluate condition and return error message if condition not satisfied.
 }
 \examples{
 assert_function(1==2,"Incorrect inequality")

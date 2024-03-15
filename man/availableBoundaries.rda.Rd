@@ -8,7 +8,7 @@
 \format{
 A list of with 3348 rows and 1 variable:
 \describe{
-\item{boundary}{name of boundary table within ONS Open geography}
+\item{boundary}{name of boundary table within 'ONS Open geography'}
 }
 }
 \source{
@@ -18,6 +18,6 @@ A list of with 3348 rows and 1 variable:
 availableBoundaries
 }
 \description{
-A list of the available boundary layers that the ONS has for ArcGIS queries
+A list of the available boundary layers that the Office for National Statistics (ONS) has for ArcGIS queries
 }
 \keyword{data}

@@ -4,7 +4,7 @@
 \name{nomisTables.rda}
 \alias{nomisTables.rda}
 \alias{nomisTables}
-\title{#' List of tables on NOMIS}
+\title{#' List of tables on 'nomis'}
 \format{
 A data frame with 1605 rows and 3 variables:
 \describe{
@@ -20,6 +20,6 @@ A data frame with 1605 rows and 3 variables:
 nomisTables
 }
 \description{
-A dataset containing the available tables, codes and sources of data available on NOMIS. The variables are as follows:
+A dataset containing the available tables, codes and sources of data available on 'nomis'. The variables are as follows:
 }
 \keyword{data}

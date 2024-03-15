@@ -2,33 +2,31 @@
 % Please edit documentation in R/get_boundaries.R
 \name{get_boundaries}
 \alias{get_boundaries}
-\title{Retrieve boundaries from the ONS Geography Portal
-given a valid boundary name and layer name.
-If the submitted geometry is outwith the ONS Boundary,
-e.g. the geometry is in France, the function will return
-an empty shape file}
+\title{Get Boundaries Using Geospatial Filter}
 \usage{
 get_boundaries(boundary, geometry_filter = NULL)
 }
 \arguments{
-\item{boundary}{A valid ONS boundary name given as a string}
+\item{boundary}{A valid ONS boundary name given as a string.}
 
-\item{geometry_filter}{geospatial shape or point (using latitude and longitude)
-Currently limited to a rectangular box or dropped pin}
+\item{geometry_filter}{geospatial shape or point (using latitude and longitude).
+Currently limited to a rectangular box or dropped pin.}
 }
 \value{
-Shapefile of all constituencies in the geospatial area submitted through
-the geometry_filter, at the chosen ONS Boundary export
+An sf object for all constituencies in the geospatial area submitted through
+the geometry_filter, at the chosen ONS Boundary.
 }
 \description{
-Retrieve boundaries from the ONS Geography Portal
+Retrieve boundaries from the Office for National Statistics (ONS) 'ONS Geography Portal'
 given a valid boundary name and layer name.
 If the submitted geometry is outwith the ONS Boundary,
 e.g. the geometry is in France, the function will return
-an empty shape file
+an empty shape file.
 }
 \examples{
+\dontrun{
 get_boundaries(boundary="MSOA_Dec_2011_Boundaries_Generalised_Clipped_BGC_EW_V3_2022",
 geometry_filter="-1.282825,52.354169,0.206626,52.7106")
+}
 
 }

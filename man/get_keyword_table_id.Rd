@@ -2,19 +2,20 @@
 % Please edit documentation in R/get_keyword_table_id.R
 \name{get_keyword_table_id}
 \alias{get_keyword_table_id}
-\title{Function to return list}
+\title{Keyword Search of 'nomis'}
 \usage{
 get_keyword_table_id(usr_keyword)
 }
 \arguments{
-\item{usr_keyword}{Keyword to search nomis tables for}
+\item{usr_keyword}{Keyword to search 'nomis' tables for, e.g. "religion", "employment", "housing"}
 }
 \value{
-A tidy dataframe of all nomis tables and their ids, which contain the chosen keyword
+A tidy dataframe of all nomis tables and their ids, which contain the chosen keyword.
 }
 \description{
-Function to return list
+Function to return dataframe of all 'nomis' tables,
+and their corresponding codes and descriptions, which have the chosen keyword.
 }
 \examples{
-get_keyword_table_id(usr_keyword="industry")
+get_keyword_table_id(usr_keyword="passports")
 }

@@ -2,24 +2,22 @@
 % Please edit documentation in R/get_table_info_brief.R
 \name{get_table_info_brief}
 \alias{get_table_info_brief}
-\title{Retrieve summary information about
-a given NOMIS dataset. This is
-useful as it provides the descripion
-of the dataset and any caveats}
+\title{Key 'nomis' Table Information}
 \usage{
 get_table_info_brief(id)
 }
 \arguments{
-\item{id}{A valid NOMIS table id given as a string, e.g. NM_46_1}
+\item{id}{A valid 'nomis' table id given as a string, e.g. NM_46_1.}
 }
 \value{
-A json file containing the DatasetInfo, DatasetMetadata, Dimensions (variables), Dataset Contact,Units
+A json file containing the DatasetInfo, DatasetMetadata, Dimensions (variables), Dataset Contact, Units from the target 'nomis' table.
 }
 \description{
 Retrieve summary information about
-a given NOMIS dataset. This is
-useful as it provides the descripion
-of the dataset and any caveats
+a given 'nomis' dataset. This is
+useful as it provides the description
+of the dataset and any caveats.
+It also returns information about the current status of the data, and when it was last updated.
 }
 \examples{
 get_table_info_brief(id="NM_1_1")

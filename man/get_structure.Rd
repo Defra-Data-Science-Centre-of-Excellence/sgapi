@@ -2,19 +2,21 @@
 % Please edit documentation in R/get_structure.R
 \name{get_structure}
 \alias{get_structure}
-\title{Retrieve dataset overview
-for a valid NOMIS table id}
+\title{Extract 'nomis' Table Data for Chosen Dimension}
 \usage{
 get_structure(id, dim)
 }
 \arguments{
-\item{id}{A valid NOMIS id.}
+\item{id}{A valid 'nomis' id.}
 
 \item{dim}{The name of the g which dimension is queried.}
 }
+\value{
+An object with JSON structure for the chosen dimension of the selected 'nomis' table.
+}
 \description{
-Retrieve dataset overview
-for a valid NOMIS table id
+Retrieve dataset for a valid 'nomis' table id and dimension.
+This extracts all of the available instances of the chosen dimension, which can then be used to filter the 'nomis' table.
 }
 \examples{
 get_structure(id="NM_187_1",dim="industry")

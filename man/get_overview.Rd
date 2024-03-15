@@ -2,21 +2,22 @@
 % Please edit documentation in R/get_overview.R
 \name{get_overview}
 \alias{get_overview}
-\title{Retrieve dataset overview
-for a valid NOMIS table id}
+\title{Table Overview}
 \usage{
 get_overview(id)
 }
 \arguments{
-\item{id}{A valid NOMIS id.}
+\item{id}{A valid 'nomis' id.}
 }
 \value{
-json file with overview information of chosen data set - including description of the dataset, last update date, contact for the data
+An object with overview information of chosen data set. Object has the structure of the extracted JSON object.
 }
 \description{
-Retrieve dataset overview
-for a valid NOMIS table id
+Retrieve dataset overview for a valid 'nomis' table id.
+Returned object includes description of the dataset, last update date, contact for the data.
+It also extracts all of the available instances of the available table dimensions, which can then be used to filter the dataset 'nomis' table.
 }
 \examples{
 get_overview(id="NM_1_1")
+
 }

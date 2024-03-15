@@ -1,6 +1,3 @@
-library(magrittr)
-
-
 test_that("A valid table ID
           should return a list
           ", {

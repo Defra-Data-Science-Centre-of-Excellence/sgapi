@@ -2,17 +2,18 @@
 % Please edit documentation in R/list_tables.R
 \name{list_tables}
 \alias{list_tables}
-\title{List all available datasets on NOMIS using list_tables()}
+\title{Available 'nomis' Tables}
 \usage{
 list_tables(base_url = "https://www.nomisweb.co.uk/api/v01/")
 }
 \arguments{
-\item{base_url}{Url of the API from which the available tables are listed}
+\item{base_url}{Url of the API from which the available tables are listed.}
 }
 \value{
-data frame containing
-the name and ID of each table
+A tidy dataframe containing
+the name and ID of each table available on 'nomis'.
 }
 \description{
-List all available datasets on NOMIS using list_tables()
+List all available datasets on 'nomis'.
+User can then use the items on this list to query 'nomis' data.
 }

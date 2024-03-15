@@ -1,9 +1,8 @@
-#Generate master dataset showing all of the available boundary scales for the tables in "nomisTables.rda"
+#' Generate dataframe showing all of the available boundary scales for the tables in "nomisTables.rda" and write to .rda file
 
 create_dataset <- function() {
   scales <- data.frame()
   for (i in nomisTables$id) {
-    print(i)
     try({
       x <- available_scales(i)
       if (class(x) == "character") {

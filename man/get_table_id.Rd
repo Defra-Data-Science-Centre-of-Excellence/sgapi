@@ -2,20 +2,19 @@
 % Please edit documentation in R/get_table_id.R
 \name{get_table_id}
 \alias{get_table_id}
-\title{Extract unique table ids  for tables containing given name in their title,
-these unique table ids are used to rapidly query census data in other functions}
+\title{Get 'nomis 'Table IDs}
 \usage{
 get_table_id(name)
 }
 \arguments{
-\item{name}{A valid NOMIS table name given as a string}
+\item{name}{A string to search for within 'nomis' table titles.}
 }
 \value{
-The nomis table codes for all tables containing the selected name, that allows rapid querying of the data e.g. "NM_102_1"
+A dataframe of 'nomis' table codes and names, as strings, for all 'nomis' tables containing the selected 'name' in their title.
 }
 \description{
-Extract unique table ids  for tables containing given name in their title,
-these unique table ids are used to rapidly query census data in other functions
+Extract unique table ids for 'nomis' tables containing given name in their title,
+these unique table ids can be used to rapidly query census data in other functions e.g. 'get_overview("NM_102_1")'
 }
 \examples{
 get_table_id(name="employment")

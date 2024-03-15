@@ -1,8 +1,13 @@
-#' List all available datasets on NOMIS using list_tables()
+#' @title Available 'nomis' Tables
+#'
+#' @description
+#' List all available datasets on 'nomis'. 
+#' User can then use the items on this list to query 'nomis' data.
 #' 
-#' @param base_url Url of the API from which the available tables are listed
-#' @returns data frame containing
-#' the name and ID of each table
+#' @param base_url Url of the API from which the available tables are listed.
+#' 
+#' @returns A tidy dataframe containing
+#' the name and ID of each table available on 'nomis'.
 #' 
 #' @export
 

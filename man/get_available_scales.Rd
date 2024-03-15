@@ -2,20 +2,20 @@
 % Please edit documentation in R/get_available_scales.R
 \name{get_available_scales}
 \alias{get_available_scales}
-\title{Retrieve available spatial scales
-for a given NOMIS dataset ID.}
+\title{Available Boundary Scales for 'nomis' Table}
 \usage{
 get_available_scales(id)
 }
 \arguments{
-\item{id}{A valid NOMIS table id given as a string}
+\item{id}{A valid 'nomis' table id given as a string.}
 }
 \value{
-A tidy dataframe listing the Geographical scales available for the NOMIS table selected. E.g. Many census datasets are available at MSOA and LSOA resolutions but not at Regional level
+A tidy dataframe listing the geographical scales available for the 'nomis' table selected.
 }
 \description{
-Retrieve available spatial scales
-for a given NOMIS dataset ID.
+Retrieve available spatial scales for a given 'nomis' table id.
+This is useful as each table only has data at a specific set of scales,
+e.g. many census tables are available at MSOA and LSOA resolutions but not at Regional level.
 }
 \examples{
 get_available_scales(id="NM_1003_1")

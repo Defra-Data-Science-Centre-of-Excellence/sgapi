@@ -2,16 +2,18 @@
 % Please edit documentation in R/list_data_sources.R
 \name{list_data_sources}
 \alias{list_data_sources}
-\title{Return a list of data sources available on NOMIS}
+\title{List 'nomis' Data Sources}
 \usage{
 list_data_sources()
 }
 \value{
-List of all availbale datasources accessible through the Nomis API system. More information can be found here: https://www.nomisweb.co.uk/api/v01/help
+A tidy dataframe of all available data sources accessible through the 'nomis' API system.
 }
 \description{
-Returns a list including the name and id of each
-data source available on NOMIS.
+Return a list of the data sources available on 'nomis'.
+
+Returns a list including the name, id and description of each
+data source available on 'nomis'. More information can be found here: https://www.nomisweb.co.uk/api/v01/help
 }
 \examples{
 list_data_sources()

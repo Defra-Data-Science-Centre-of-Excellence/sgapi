@@ -1,8 +1,12 @@
+#' @title List Available Boundaries
+#' 
+#' @description
 #' Retrieve all available ArcGIS boundary layers
-#' from the ONS Open Geography Portal using list_boundaries()
+#' from the 'ONS Open Geography Portal'.
+#' 
 #' @importFrom magrittr %>%
 #' 
-#' @returns list of avvailable boundary layers on ArcGIS
+#' @returns A vector of available boundary layers on 'ONS Open Geography'.
 #' 
 #' @export
 

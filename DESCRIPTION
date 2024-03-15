@@ -1,15 +1,15 @@
 Package: sgapi
-Title: Functions to Aid Querying Nomis and ONS Open Geography APIs
+Title: Functions to Aid Querying 'nomis' and 'Office for National Statistics Open Geography' APIs
 Version: 1.0.0
 Authors@R: 
     c(person("Andrew", "Christy", , "OR_Hub@defra.gov.uk", role = c("aut", "cre")),
            person("James","Macpherson", , "James.macpherson@defra.gov.uk", role = "aut"),
            person("Hadyn","Jenkins", role = "aut" ))
-Description: Functions to facilitate extraction of geospatial data from ONS Open Geography and nomis. Simplifies process of querying nomis datasets <https://www.nomisweb.co.uk/> and extracting desired datasets in dataframe format. Includes functions to extract area shapefiles at chosen resolution from ONS Open Geography <https://geoportal.statistics.gov.uk/>.
+Description: Functions to facilitate extraction of geospatial data from the 'Office for National Statistics Open Geography' and 'nomis' Application Programming Interfaces (APIs). Simplifies process of querying 'nomis' datasets <https://www.nomisweb.co.uk/> and extracting desired datasets in dataframe format. Includes functions to extract area shapefiles at chosen resolution from 'Office for National Statistics Open Geography' <https://geoportal.statistics.gov.uk/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 URL: https://defra-data-science-centre-of-excellence.github.io/sgapi/, https://github.com/Defra-Data-Science-Centre-of-Excellence/sgapi
 BugReports: https://github.com/Defra-Data-Science-Centre-of-Excellence/sgApi/issues
 Imports:

@@ -1,20 +1,23 @@
-#' Extract table with a lookup between two boundary scales, e.g. get a lookup between Regions and Parliamentary constituencies
-#' for a given NOMIS dataset ID. 
+#' @title Lookup Between Boundary Scales
+#' 
+#' @description
+#' Extract a lookup table between two boundary scales from 'ONS Open Geography' portal, 
+#' e.g. get a lookup between Regions and Parliamentary constituencies.
 #' 
 #' @import dplyr
 #' @importFrom magrittr %>%
 #' 
 #' @param lookup_table A valid ONS lookup table
-#' @param col_name_1 Field in ONS table containing the constituency code of the smaller scale resolution
-#' @param col_name_2 Field in ONS table containing the constituency code of the larger scale resolution
-#' @param col_name_3 Field in ONS table containing the constituency name of the smaller scale resolution
-#' @param col_name_4 Field in ONS table containing the constituency name of the larger scale resolution
+#' @param col_name_1 Field in ONS table containing the constituency code of the smaller scale resolution.
+#' @param col_name_2 Field in ONS table containing the constituency code of the larger scale resolution.
+#' @param col_name_3 Field in ONS table containing the constituency name of the smaller scale resolution.
+#' @param col_name_4 Field in ONS table containing the constituency name of the larger scale resolution.
 #' 
 #' @examples 
 #' get_table_link_lookup(lookup_table="LAD22_CTY22_EN_LU",col_name_1="LAD22CD",
 #' col_name_2="CTY22CD",col_name_3="LAD22NM",col_name_4="CTY22NM")
 #' 
-#' @returns A dataframe lookup between two chosen boundary resolutions
+#' @returns A tidy dataframe, providing a lookup between two chosen boundary resolutions.
 #' @export
 
 get_table_link_lookup <- function(lookup_table,col_name_1,col_name_2,col_name_3,col_name_4){

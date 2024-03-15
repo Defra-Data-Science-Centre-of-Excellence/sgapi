@@ -2,15 +2,14 @@
 % Please edit documentation in R/list_boundaries.R
 \name{list_boundaries}
 \alias{list_boundaries}
-\title{Retrieve all available ArcGIS boundary layers
-from the ONS Open Geography Portal using list_boundaries()}
+\title{List Available Boundaries}
 \usage{
 list_boundaries()
 }
 \value{
-list of avvailable boundary layers on ArcGIS
+A vector of available boundary layers on 'ONS Open Geography'.
 }
 \description{
 Retrieve all available ArcGIS boundary layers
-from the ONS Open Geography Portal using list_boundaries()
+from the 'ONS Open Geography Portal'.
 }

@@ -1,16 +1,22 @@
-#' Retrieve a NOMIS table using a given table ID. 
+#' @title Get 'nomis' Table 
+#' 
+#' @description
+#' Retrieve a 'nomis' table, containing the columns of interest, using a given table ID. 
+#' Option to apply filters to the query, and to circumnavigate the limit on number of rows returned using your 'nomis' uid.
+#' 
 #' @import readr
 #' 
-#' @param id a table ID recognised by NOMIS (e.g. "NM_1_1")
+#' @param id a table ID recognised by 'nomis' (e.g. "NM_1_1")
 #' @param options a list of paramaters to pass to the API query.
-#' @param selection a vector of column names to return. NULL returns all.  
-#' @param uid Unique Nomis identifier to enable larger NOMIS queries - https://www.nomisweb.co.uk/
+#' @param selection a vector of column names to return. NULL returns all. Defaults to NULL.
+#' @param uid Unique 'nomis' identifier to enable larger 'nomis' queries - https://www.nomisweb.co.uk/. Defaults to NULL.
 #' 
 #' @examples 
 #' get_table(id="NM_1_1", options = list("geography" = "TYPE480", "time" = "latest"))
 #' get_table(id="NM_1002_1", options = list("geography" = "TYPE265", "time" = "latest"),
 #' selection = "GEOGRAPHY_NAME,C_AGE_NAME,OBS_VALUE",uid=NULL)
-#' @returns returns tidy dataframe of selected NOMIS table with the selected parameters and user filters applied
+#' 
+#' @returns A tidy dataframe of selected 'nomis' table with the selected parameters and user filters applied.
 #' @export
 
 get_table <- function(id,

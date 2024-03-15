@@ -1,8 +1,8 @@
-#' Retrieve all available Nomis tables
+#' Retrieve all available 'nomis' tables
 #' 
 #' @importFrom magrittr %>%
 #' 
-#' @returns A dataframe with all available table codes and names
+#' @returns A dataframe of all available table codes and names, written to to an .rda file
 
 
 library(dplyr)
@@ -14,7 +14,6 @@ extract_data_source <- function() {
   for (i in {
      nomisTables %>% dplyr::filter(id != "NM_45_1") %>% dplyr::filter(id != "NM_2064_1") %>% dplyr::pull("id")
   }) {
-    print(i)
     
     
     x <- get_overview(i)
@@ -58,7 +57,6 @@ extract_data_source <- function() {
                            id = i)
       sources <- dplyr::bind_rows(source, sources)
     }
-    
     
     
     

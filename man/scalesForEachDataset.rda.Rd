@@ -10,7 +10,7 @@ A data frame with 22564 rows and 3 variables:
 \describe{
 \item{name}{name of boundary layer}
 \item{value}{type of data}
-\item{table}{NOMIS code for the table}
+\item{table}{nomis code for the table}
 }
 }
 \source{
@@ -20,7 +20,7 @@ A data frame with 22564 rows and 3 variables:
 scalesForEachDataset
 }
 \description{
-A dataset containing the available tables on NOMIS, and the boundary layers at which this data is held, e.g. demographic information may only be held in the
+A dataset containing the available tables on 'nomis', and the boundary layers at which this data is held, e.g. demographic information may only be held in the
 Census output areas and not NHS regions. The variables are as follows:
 }
 \keyword{data}

@@ -1,12 +1,17 @@
+#' @title Table Dimensions
+#' 
+#' @description
 #' Extract dimensions available
-#' for a given NOMIS table ID
+#' for a given 'nomis' table ID. e.g. the dimensions of the table 
+#' 'RM011 - Country of birth by age ' are age, country and geography;
+#' this function will return all of the available age, country and geography filters available on the table.
 #' 
-#' 
-#' @param id A table ID recognised by NOMIS (e.g "NM_1_1")
+#' @param id A table ID recognised by 'nomis' (e.g "NM_1_1").
 #' 
 #' @examples get_table_dimensions(id="NM_1240_1")
+#' 
+#' @returns A tidy dataframe of the dimensions, and available filtering values, of your chosen 'nomis' table.
 #' @export
-#' @returns A tidy data frame of the dimensions of your chosen nomis table.
 
 #The dimensions refer to the different columns of the table, i.e. year of interest, total claimants, occupation, etc.
 get_table_dimensions <- function(id) {
@@ -20,7 +25,6 @@ get_table_dimensions <- function(id) {
     dimension_name <- dimensions_overview[[i]]$concept
     
     structure_overview<-get_structure(id,dimension_name)
-    print(dimension_name)
 
     
     # EXTRACT DIMENSION VALUES

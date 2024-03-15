@@ -1,11 +1,15 @@
-#' Function to return list 
+#' @title Keyword Search of 'nomis'
+#' 
+#' @description 
+#' Function to return dataframe of all 'nomis' tables, 
+#' and their corresponding codes and descriptions, which have the chosen keyword.
 #' 
 #' @import xml2
 #' 
-#' @param usr_keyword Keyword to search nomis tables for 
+#' @param usr_keyword Keyword to search 'nomis' tables for, e.g. "religion", "employment", "housing"
 #' 
-#' @examples get_keyword_table_id(usr_keyword="industry")
-#' @returns A tidy dataframe of all nomis tables and their ids, which contain the chosen keyword
+#' @examples get_keyword_table_id(usr_keyword="passports")
+#' @returns A tidy dataframe of all nomis tables and their ids, which contain the chosen keyword.
 #' @export
 
 get_keyword_table_id <- function(usr_keyword){
