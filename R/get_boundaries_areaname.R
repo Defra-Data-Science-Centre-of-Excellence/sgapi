@@ -1,13 +1,18 @@
-#' Extract a geojson file of our chosen constituencies
+#' @title Get Boundaries Using Area Names
 #' 
-#' @param boundary The resolution of constituencies, e.g. Census Output areas or Westminster Constituencies. Available boundaries can be found here: https://geoportal.statistics.gov.uk/ 
-#' @param col_name_var The name of the datafield where the constituency name is held, e.g. PCON22NM for 2022 Parliamentary Constituencies
-#' @param chosen_constituency_list List of chosen constituencies
+#' @description
+#' Extract a geojson shapefile of the chosen areas at the user-selected resolution.
+#' 
+#' @usage get_boundaries_areaname(boundary,col_name_var,chosen_constituency_list)
+#' 
+#' @param boundary The resolution of constituencies, e.g. Census Output Areas or Westminster Constituencies. Available boundaries can be found here: https://geoportal.statistics.gov.uk/ 
+#' @param col_name_var The name of the datafield where the constituency name is held, e.g. PCON22NM for 2022 Parliamentary Constituencies.
+#' @param chosen_constituency_list List of chosen constituencies.
 #' 
 #' @examples get_boundaries_areaname(boundary="Local_Authority_Districts_December_2022_UK_BGC_V2",
 #' col_name_var="LAD22NM",chosen_constituency_list=c("Westminster","Tower Hamlets","County Durham"))
 #' 
-#' @returns A geojson spatial file of the constituencies submitted to the function
+#' @returns An sf object of the constituencies submitted to the function. If there are no constituencies, return is NULL.
 #' @export
 
 get_boundaries_areaname <- function(boundary,
@@ -92,9 +97,10 @@ get_boundaries_areaname <- function(boundary,
   },
   error = function(e) {
     message("Error in column name for chosen boundary, or in the list of area names. Check your chosen boundary scale on https://geoportal.statistics.gov.uk/")
-    print(e)
+    return(NULL)
   }
   
   )
 
 }
+

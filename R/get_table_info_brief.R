@@ -1,15 +1,19 @@
+#' @title Key 'nomis' Table Information
+#' 
+#' @description
 #' Retrieve summary information about
-#' a given NOMIS dataset. This is
-#' useful as it provides the descripion 
-#' of the dataset and any caveats
+#' a given 'nomis' dataset. This is
+#' useful as it provides the description 
+#' of the dataset and any caveats. 
+#' It also returns information about the current status of the data, and when it was last updated.
 #' 
 #' @importFrom magrittr %>%
 #' 
-#' @param id A valid NOMIS table id given as a string, e.g. NM_46_1
+#' @param id A valid 'nomis' table id given as a string, e.g. NM_46_1.
 #' 
 #' @examples get_table_info_brief(id="NM_1_1")
 #' 
-#' @returns A json file containing the DatasetInfo, DatasetMetadata, Dimensions (variables), Dataset Contact,Units
+#' @returns A json file containing the DatasetInfo, DatasetMetadata, Dimensions (variables), Dataset Contact, Units from the target 'nomis' table.
 #' @export
 
 get_table_info_brief <- function(id){
@@ -26,7 +30,7 @@ get_table_info_brief <- function(id){
     },
   error = function(e) {
     message("Chosen Nomis table id does not exist, see column 'id' in sgapi::nomisTables for available table ids")
-    print(e)
+    return(NULL)
   }
   )
 

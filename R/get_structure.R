@@ -1,9 +1,17 @@
-#' Retrieve dataset overview
-#' for a valid NOMIS table id
+#' @title Extract 'nomis' Table Data for Chosen Dimension
+#' 
+#' @description
+#' Retrieve dataset for a valid 'nomis' table id and dimension.
+#' This extracts all of the available instances of the chosen dimension, which can then be used to filter the 'nomis' table.
+#' 
 #' @importFrom magrittr %>%
 #' 
-#' @param id A valid NOMIS id.
+#' @usage get_structure(id, dim)
+#' 
+#' @param id A valid 'nomis' id.
 #' @param dim The name of the g which dimension is queried.
+#' 
+#' @returns An object with JSON structure for the chosen dimension of the selected 'nomis' table. 
 #' 
 #' @examples 
 #' get_structure(id="NM_187_1",dim="industry")
@@ -27,7 +35,10 @@ get_structure <- function(id,dim) {
     },
     error = function(e) {
       message("Chosen Nomis table id or dimension does not exist, see column 'id' in sgapi::nomisTables for available table ids")
-      print(e)
+      return(NULL)
   }
   )
 }
+
+tester <- get_structure(id="NM_187_1",dim="industry")
+is.list(tester)

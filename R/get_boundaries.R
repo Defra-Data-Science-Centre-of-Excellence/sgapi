@@ -1,19 +1,24 @@
-#' Retrieve boundaries from the ONS Geography Portal
+#' @title Get Boundaries Using Geospatial Filter
+#' 
+#' @description
+#' Retrieve boundaries from the Office for National Statistics (ONS) 'ONS Geography Portal'
 #' given a valid boundary name and layer name. 
 #' If the submitted geometry is outwith the ONS Boundary,
 #' e.g. the geometry is in France, the function will return 
-#' an empty shape file
+#' an empty shape file.
 #'
-#' @param boundary A valid ONS boundary name given as a string
-#' @param geometry_filter geospatial shape or point (using latitude and longitude) 
-#' Currently limited to a rectangular box or dropped pin
+#' @param boundary A valid ONS boundary name given as a string.
+#' @param geometry_filter geospatial shape or point (using latitude and longitude).
+#' Currently limited to a rectangular box or dropped pin.
 #'
 #' @examples 
+#' \dontrun{
 #' get_boundaries(boundary="MSOA_Dec_2011_Boundaries_Generalised_Clipped_BGC_EW_V3_2022",
 #' geometry_filter="-1.282825,52.354169,0.206626,52.7106")
+#' }
 #' 
-#' @returns Shapefile of all constituencies in the geospatial area submitted through 
-#' the geometry_filter, at the chosen ONS Boundary export
+#' @returns An sf object for all constituencies in the geospatial area submitted through 
+#' the geometry_filter, at the chosen ONS Boundary. 
 #' @export
 
 get_boundaries <- function(boundary,
@@ -78,7 +83,7 @@ get_boundaries <- function(boundary,
     },
   error = function(e) {
     message("Error in boundary name or geometry filter, check your chosen boundary scale on https://geoportal.statistics.gov.uk/")
-    print(e)
+    return(NULL)
     }   
   )
 }
