@@ -1,6 +1,6 @@
 Package: sgapi
 Title: Aid Querying 'nomis' and 'Office for National Statistics Open Geography' APIs
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: 
     c(person("Andrew", "Christy", , "OR_Hub@defra.gov.uk", role = c("aut", "cre")),
            person("James","Macpherson", , "James.macpherson@defra.gov.uk", role = "aut"),
