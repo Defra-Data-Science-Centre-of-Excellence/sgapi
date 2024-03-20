@@ -27,6 +27,7 @@ get_boundaries <- function(boundary,
 
   output_fields="*"
   layer=0
+  geometry_filter <-gsub("\\,","%2C",geometry_filter)
   assert_function(grepl("\\s",boundary),"Boundary must be not contain any spaces, see https://geoportal.statistics.gov.uk/search?q=Boundary&sort=Date%20Created%7Ccreated%7Cdesc for available boundaries")
   tryCatch(
     {  
