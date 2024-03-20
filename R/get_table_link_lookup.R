@@ -14,8 +14,10 @@
 #' @param col_name_4 Field in ONS table containing the constituency name of the larger scale resolution.
 #' 
 #' @examples 
+#' \dontrun{
 #' get_table_link_lookup(lookup_table="LAD22_CTY22_EN_LU",col_name_1="LAD22CD",
 #' col_name_2="CTY22CD",col_name_3="LAD22NM",col_name_4="CTY22NM")
+#' }
 #' 
 #' @returns A tidy dataframe, providing a lookup between two chosen boundary resolutions.
 #' @export
