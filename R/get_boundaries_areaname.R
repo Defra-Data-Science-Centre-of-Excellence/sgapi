@@ -34,9 +34,9 @@ get_boundaries_areaname <- function(boundary,
   if (num_constituencies<=30){
   for (i in 1:length(chosen_constituency_list)) {
     if (i < length(chosen_constituency_list)) {
-      api_list_constituencies <- paste0(api_list_constituencies,chosen_constituency_list[i],"'%20OR%20",col_name_var,"%20%3D%20'")}
+      api_list_constituencies <- paste0(api_list_constituencies,gsub("\\s","%20",chosen_constituency_list[i]),"'%20OR%20",col_name_var,"%20%3D%20'")}
     else {
-      api_list_constituencies <- paste0(api_list_constituencies,chosen_constituency_list[i],"')%20")
+      api_list_constituencies <- paste0(api_list_constituencies,gsub("\\s","%20",chosen_constituency_list[i]),"')%20")
     }
   }
   
@@ -54,6 +54,7 @@ get_boundaries_areaname <- function(boundary,
     output_fields,
     "&outSR=4326&f=geojson"
   )
+
   spatial_object <- sf::st_read(full_api_link)
   }
   else {
@@ -63,12 +64,15 @@ get_boundaries_areaname <- function(boundary,
     for (n in 1:num_loops){
       api_list_constituencies = ''
       start_int=((n-1)*30)+1
-      end_int=((n-1)*30)+30
+      if (n<num_loops){
+          end_int=((n-1)*30)+30
+      }
+      else {end_int=num_constituencies}
       for (i in start_int:end_int) {
         if (i < end_int) {
-          api_list_constituencies <- paste0(api_list_constituencies,chosen_constituency_list[i],"'%20OR%20",col_name_var,"%20%3D%20'")}
+          api_list_constituencies <- paste0(api_list_constituencies,gsub("\\s","%20",chosen_constituency_list[i]),"'%20OR%20",col_name_var,"%20%3D%20'")}
         else {
-          api_list_constituencies <- paste0(api_list_constituencies,chosen_constituency_list[i],"')%20")
+          api_list_constituencies <- paste0(api_list_constituencies,gsub("\\s","%20",chosen_constituency_list[i]),"')%20")
         }
       }
       
@@ -86,13 +90,14 @@ get_boundaries_areaname <- function(boundary,
         output_fields,
         "&outSR=4326&f=geojson"
       )
+      
       new_sf <- sf::st_read(full_api_link)
     
     #Bind together spatial objects of smaller queries 
     spatial_object <- rbind(spatial_object, new_sf)
     }
   }
-  if(length(spatial_object)==1L){warning("OUT OF BOUNDS. The selected geometry does not contain any areas in chosen boundary scale")}
+  if(length(spatial_object)==1L){warning("OUT OF BOUNDS. The selected area name(s) do not exist for your chosen boundary scale (please ensure you haven't included any leading or trailing blank spaces in the area names)")}
   return(spatial_object)
   },
   error = function(e) {
