@@ -71,7 +71,7 @@ get_table_link_lookup <- function(lookup_table, col_name_1, col_name_2, col_name
       }
       loop_num <- loop_num + 1
     }
-  } else if ((raw_count <= 32000) & (raw_count > 0)) {
+  } else if ((raw_count$count <= 32000) & (raw_count$count > 0)) {
     #If the dataset has fewer than 32,000 rows, can just do the simple extraction
     if ((col_name_1 == col_name_2) & (col_name_3 == col_name_4)) {
       api_link_full <- paste0(api_link,queries,col_name_1,",",col_name_3,"&returnGeometry=false&resultType=standard&outSR=4326&f=json")
@@ -92,9 +92,9 @@ get_table_link_lookup <- function(lookup_table, col_name_1, col_name_2, col_name
 					     con_code_large = raw_data[["features"]][[j]][["attributes"]][[col_name_3]],
 					     con_code_small = raw_data[["features"]][[j]][["attributes"]][[col_name_4]]))
     }
-  } else if (raw_count > 32000) {
+  } else if (raw_count$count > 32000) {
     #if the dataset is large and the API count is successful, loop through the dataset in 32,000 row extracts until all of the data has been extracted
-    num_loops = ceiling(raw_count / 32000)
+    num_loops = ceiling(raw_count$count / 32000)
     for (n in 1:num_loops) {
       off_set_val <- (n - 1) * 32000
       if ((col_name_1 == col_name_2) & (col_name_3 == col_name_4)) {
