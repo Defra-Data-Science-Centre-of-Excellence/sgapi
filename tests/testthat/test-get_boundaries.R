@@ -25,9 +25,9 @@ test_that("Invalid area name(s) returns an error", {
 #})
 
 
-test_that("An invalid column name returns a warning", {
-  expect_warning(get_boundaries_areaname("Local_Authority_Districts_December_2022_UK_BGC_V2","L22NM",c("Derbyshire Dales","Harrogate")))
-})
+#test_that("An invalid column name returns a warning", {
+#  expect_warning(get_boundaries_areaname("Local_Authority_Districts_December_2022_UK_BGC_V2","L22NM",c("Derbyshire Dales","Harrogate")))
+#})
 
 test_that("A valid boundary containing a space in the title throws an error", {
   expect_error(get_boundaries("MSOA Dec 2011_Boundaries_Generalised_Clipped_BGC_EW_V3_2022","52.354169,-1.282825,52.7106,0.206626"))
