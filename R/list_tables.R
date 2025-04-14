@@ -11,14 +11,12 @@
 #' 
 #' @export
 
-
-list_tables <- function(base_url = "https://www.nomisweb.co.uk/api/v01/"){
+list_tables <- function(base_url = "https://www.nomisweb.co.uk/api/v01/dataset"){
   
-  y <- httr::GET("https://www.nomisweb.co.uk/api/v01/dataset/def.sdmx.json") %>%
-    httr::content()
+  y <- httr::GET(paste0(base_url, "/def.sdmx.json")) |> httr::content()
 
-	nomis_names <- unlist(map(y$structure$keyfamilies$keyfamily, function (x) x[["name"]]$value))
-	nomis_ids <- unlist(map(y$structure$keyfamilies$keyfamily, function (x) x[["id"]]))
+	nomis_ids <- lapply(y$structure$keyfamilies$keyfamily, function (x) x[["id"]])
+	nomis_names <- lapply(y$structure$keyfamilies$keyfamily, function (x) x[["name"]]$value)
 
-	return(data.frame(name = nomis_names, id = nomis_ids))
+	return(data.frame(id = unlist(nomis_ids), name = unlist(nomis_names)))
 }
