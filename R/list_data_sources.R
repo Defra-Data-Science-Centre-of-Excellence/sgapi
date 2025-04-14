@@ -21,7 +21,7 @@ list_data_sources <- function() {
  
   sources <- data.frame()
   for (i in seq_along(y$contenttype$item)) {
-    if(length(y$contenttype$item[[i]]$description)>0 ){
+    if(y$contenttype$item[[i]]$id != "census" ){
       source <- data.frame(
         source_name = y$contenttype$item[[i]]$name,
         source_id = y$contenttype$item[[i]]$id,
