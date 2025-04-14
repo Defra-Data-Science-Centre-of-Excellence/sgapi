@@ -31,20 +31,20 @@
 #' @export
 
 build_url_query_string <- function(prefix = "?", sep = "&", value_sep = ",", ...) {
-	# Coerce values in list(...) to character. If value is a vector then coerce and 
-	# collapse to string with 'value_sep' separator. I.e. c(1, 2, 3) -> "1,2,3"
-	args <- lapply(list(...), function (x) {
-		paste0(x, collapse = value_sep)
-	})
+  # Coerce values in list(...) to character. If value is a vector then coerce and 
+  # collapse to string with 'value_sep' separator. I.e. c(1, 2, 3) -> "1,2,3"
+  args <- lapply(list(...), function (x) {
+    paste0(x, collapse = value_sep)
+  })
 
-	# Create url separators depending on number of named arguments
-	# If length(args) == 0 -> c(rep("?", 0), rep("&", 0)) -> character(0)
-	# If length(args) == 1 -> c(rep("?", 1), rep("&", 0)) -> c("?")
-	# If length(args)  > 1 -> c(rep("?", 1), rep("&", length(args) - 1)) -> c("?", "&", ...)
-	seps <- c(rep(prefix, length(args) > 0), rep(sep, length(args) - (length(args) > 0)))
+  # Create url separators depending on number of named arguments
+  # If length(args) == 0 -> c(rep("?", 0), rep("&", 0)) -> character(0)
+  # If length(args) == 1 -> c(rep("?", 1), rep("&", 0)) -> c("?")
+  # If length(args)  > 1 -> c(rep("?", 1), rep("&", length(args) - 1)) -> c("?", "&", ...)
+  seps <- c(rep(prefix, length(args) > 0), rep(sep, length(args) - (length(args) > 0)))
 
-	# Paste out the vector of options in the format: "?name1=value1&name2=value2..."
-	# Empty string ("") if no named arguments provided
-	return(paste0(seps, names(args), rep("=", length(seps)), args, collapse = ""))
+  # Paste out the vector of options in the format: "?name1=value1&name2=value2..."
+  # Empty string ("") if no named arguments provided
+  return(paste0(seps, names(args), rep("=", length(seps)), args, collapse = ""))
 }
 

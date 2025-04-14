@@ -15,8 +15,8 @@ list_tables <- function(base_url = "https://www.nomisweb.co.uk/api/v01/dataset")
   
   y <- httr::GET(paste0(base_url, "/def.sdmx.json")) |> httr::content()
 
-	nomis_ids <- lapply(y$structure$keyfamilies$keyfamily, function (x) x[["id"]])
-	nomis_names <- lapply(y$structure$keyfamilies$keyfamily, function (x) x[["name"]]$value)
+  nomis_ids <- lapply(y$structure$keyfamilies$keyfamily, function (x) x[["id"]])
+  nomis_names <- lapply(y$structure$keyfamilies$keyfamily, function (x) x[["name"]]$value)
 
-	return(data.frame(id = unlist(nomis_ids), name = unlist(nomis_names)))
+  return(data.frame(id = unlist(nomis_ids), name = unlist(nomis_names)))
 }

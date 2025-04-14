@@ -20,27 +20,27 @@
 #' @export
 
 get_table <- function(id,
-                     options,
-                     selection = NULL,
-                     uid = NULL,
-										 nomis_base_url = "https://www.nomisweb.co.uk/api/v01"){
+                      options,
+                      selection = NULL,
+                      uid = NULL,
+                      nomis_base_url = "https://www.nomisweb.co.uk/api/v01"){
   
   if (!is.null(uid)){
-		options[["uid"]] <- uid
+    options[["uid"]] <- uid
   }
   
-	names(options)[names(options) == "time"] <- "date"
+  names(options)[names(options) == "time"] <- "date"
 
-	if (!is.null(selection)) {
-		options[["select"]] <- selection
-	}
-	
-	query_string <- do.call(build_url_query_string, options)
-	nomis_url <- sprintf("%s/dataset/%s.data.csv%s", nomis_base_url, id, query_string)
-	
-	raw_data <- httr::GET(nomis_url)
+  if (!is.null(selection)) {
+    options[["select"]] <- selection
+  }
+
+  query_string <- do.call(build_url_query_string, options)
+  nomis_url <- sprintf("%s/dataset/%s.data.csv%s", nomis_base_url, id, query_string)
+
+  raw_data <- httr::GET(nomis_url)
   
-	assert_function(raw_data$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_data$status_code))
+  assert_function(raw_data$status_code>=400L, paste0("API has failed, review the filters applied. The status code is: ",raw_data$status_code))
   output_data <- httr::content(raw_data)
   assert_function(length(output_data)==2L,"API has failed, review the filters applied, and check that the table id is correct")
   if (nrow(output_data)==25000){warning("Query has been truncated at 25,000 rows. Use a nomis uid to return the full table")}
