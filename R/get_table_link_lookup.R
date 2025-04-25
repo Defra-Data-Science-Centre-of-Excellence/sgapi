@@ -20,11 +20,11 @@
 #' @export
 
 get_table_link_lookup <- function(lookup_table, col_name_1, col_name_2, col_name_3, col_name_4, 
-                                  open_geography_base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services") {
+                                  base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services") {
   
   assert_function(grepl("\\s", lookup_table),"Boundary must be not contain any spaces, see https://geoportal.statistics.gov.uk/search?q=Boundary&sort=Date%20Created%7Ccreated%7Cdesc for available boundaries")
   
-  api_link <- sprintf("%s/%s/FeatureServer/0", open_geography_base_url, lookup_table)
+  api_link <- sprintf("%s/%s/FeatureServer/0", base_url, lookup_table)
   
   url_queries <- list(
     "prefix" = "query?",

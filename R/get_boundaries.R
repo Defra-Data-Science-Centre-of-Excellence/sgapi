@@ -22,8 +22,8 @@
 #' @export
 
 get_boundaries <- function(boundary,
-                          geometry_filter = NULL) {
-  base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/"
+                          geometry_filter = NULL,
+                          base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services") {
 
   output_fields="*"
   layer=0
@@ -36,6 +36,7 @@ get_boundaries <- function(boundary,
     spatial_object <- sf::st_read(
       paste0(
         base_url,
+        "/",
         boundary,
         "/FeatureServer/",
         layer,
@@ -55,6 +56,7 @@ get_boundaries <- function(boundary,
       new_sf <- sf::st_read(
         paste0(
           base_url,
+          "/",
           boundary,
           "/FeatureServer/",
           layer,

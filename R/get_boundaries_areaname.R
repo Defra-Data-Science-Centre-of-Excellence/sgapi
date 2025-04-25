@@ -17,13 +17,12 @@
 
 get_boundaries_areaname <- function(boundary,
                                     col_name_var,
-                                    chosen_constituency_list) {
-  
+                                    chosen_constituency_list,
+                                    base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services") {
   assert_function(grepl("\\s",boundary),"Boundary must be not contain any spaces, see https://geoportal.statistics.gov.uk/search?q=Boundary&sort=Date%20Created%7Ccreated%7Cdesc for available boundaries")
   layer=0
   output_fields="*"
   
-  base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/"
   api_list_constituencies = ''
   
   num_constituencies <- length(chosen_constituency_list)
@@ -42,6 +41,7 @@ get_boundaries_areaname <- function(boundary,
   
   full_api_link <-paste0(
     base_url,
+    "/",
     boundary,
     "/FeatureServer/",
     layer,
@@ -78,6 +78,7 @@ get_boundaries_areaname <- function(boundary,
       
       full_api_link <-paste0(
         base_url,
+        "/",
         boundary,
         "/FeatureServer/",
         layer,
