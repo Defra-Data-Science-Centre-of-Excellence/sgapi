@@ -10,6 +10,7 @@
 #' @param options a list of paramaters to pass to the API query.
 #' @param selection a vector of column names to return. NULL returns all. Defaults to NULL.
 #' @param uid Unique 'nomis' identifier to enable larger 'nomis' queries - https://www.nomisweb.co.uk/. Defaults to NULL.
+#' @param base_url Nomis base url to query
 #' 
 #' @examples 
 #' get_table(id="NM_1_1", options = list("geography" = "TYPE480", "time" = "latest"))
@@ -23,7 +24,7 @@ get_table <- function(id,
                       options,
                       selection = NULL,
                       uid = NULL,
-                      nomis_base_url = "https://www.nomisweb.co.uk/api/v01"){
+                      base_url = "https://www.nomisweb.co.uk/api/v01"){
   
   if (!is.null(uid)){
     options[["uid"]] <- uid
@@ -36,7 +37,7 @@ get_table <- function(id,
   }
 
   query_string <- do.call(build_url_query_string, options)
-  nomis_url <- sprintf("%s/dataset/%s.data.csv%s", nomis_base_url, id, query_string)
+  nomis_url <- sprintf("%s/dataset/%s.data.csv%s", base_url, id, query_string)
 
   raw_data <- httr::GET(nomis_url)
   

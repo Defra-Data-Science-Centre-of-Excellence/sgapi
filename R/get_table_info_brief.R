@@ -10,18 +10,18 @@
 #' @importFrom magrittr %>%
 #' 
 #' @param id A valid 'nomis' table id given as a string, e.g. NM_46_1.
+#' @param base_url Base nomis url to query
 #' 
 #' @examples get_table_info_brief(id="NM_1_1")
 #' 
 #' @returns A json file containing the DatasetInfo, DatasetMetadata, Dimensions (variables), Dataset Contact, Units from the target 'nomis' table.
 #' @export
 
-get_table_info_brief <- function(id){
+get_table_info_brief <- function(id, base_url = "https://www.nomisweb.co.uk/api/v01"){
   tryCatch(
     {
-      base_url = "https://www.nomisweb.co.uk/api/v01/"
       raw_info <- httr::GET(paste0(base_url,
-                                  "dataset/",
+                                  "/dataset/",
                                    id,
                                   ".overview.json?select=DatasetInfo,DatasetMetadata,Dimensions,Codes-workforce,Contact,Units")) %>%
       httr::content()

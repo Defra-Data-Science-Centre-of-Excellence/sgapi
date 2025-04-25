@@ -7,6 +7,8 @@
 #' Returns a list including the name, id and description of each
 #' data source available on 'nomis'. More information can be found here: https://www.nomisweb.co.uk/api/v01/help
 #' 
+#' @param base_url Base nomis url to query
+#'
 #' @importFrom magrittr %>%
 #'
 #' @examples
@@ -15,8 +17,8 @@
 #' @returns A tidy dataframe of all available data sources accessible through the 'nomis' API system. 
 #' @export
 
-list_data_sources <- function() {
-  y <- httr::GET("https://www.nomisweb.co.uk/api/v01/contenttype/sources.json") %>%
+list_data_sources <- function(base_url = "https://www.nomisweb.co.uk/api/v01") {
+  y <- httr::GET(paste0(base_url, "/contenttype/sources.json")) %>%
     httr::content()
  
   sources <- data.frame()

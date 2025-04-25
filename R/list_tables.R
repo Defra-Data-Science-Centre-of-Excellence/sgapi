@@ -11,9 +11,9 @@
 #' 
 #' @export
 
-list_tables <- function(base_url = "https://www.nomisweb.co.uk/api/v01/dataset"){
+list_tables <- function(base_url = "https://www.nomisweb.co.uk/api/v01"){
   
-  y <- httr::GET(paste0(base_url, "/def.sdmx.json")) |> httr::content()
+  y <- httr::GET(paste0(base_url, "/dataset/def.sdmx.json")) |> httr::content()
 
   nomis_ids <- lapply(y$structure$keyfamilies$keyfamily, function (x) x[["id"]])
   nomis_names <- lapply(y$structure$keyfamilies$keyfamily, function (x) x[["name"]]$value)

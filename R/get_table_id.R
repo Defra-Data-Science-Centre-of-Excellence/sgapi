@@ -14,12 +14,11 @@
 #' 
 #' @export
 
-get_table_id <- function(name){
-  base_url <- "https://www.nomisweb.co.uk/api/v01/"
+get_table_id <- function(name, base_url = "https://www.nomisweb.co.uk/api/v01") {
   raw_data <- httr::GET(
     paste0(
       base_url,
-      "dataset/def.sdmx.json?search=name-*",
+      "/dataset/def.sdmx.json?search=name-*",
       name,
       "*"
     )) %>%
