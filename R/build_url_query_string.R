@@ -48,3 +48,29 @@ build_url_query_string <- function(prefix = "?", sep = "&", value_sep = ",", ...
   return(paste0(seps, names(args), rep("=", length(seps)), args, collapse = ""))
 }
 
+#' @title Build constituency section of get_boundary_areaname query string
+#'
+#' @description 
+#' Create correctly formatted 'where' part of url query string used by
+#' get_boundary_areaname to fetch contituency boundaries
+#' 
+#' @param constituency_list Vector of constituency names
+#' @param Additional strings to be added to the query string
+#'
+#' @examples
+#' build_constituency_query_string("Westminster", "LAD22NM", "3D")
+#' "%20(%20'LAD22NM%20%3D%20'Westminster')%20"
+#'
+#' build_constituency_query_string(c("Westminster", "Tower Hamlets"), "LAD22NM", "3D")
+#' "%20(%20'LAD22NM%20%3D%20'Westminster'%20OR%20LAD22NM%20%3D%20'Tower%20Hamlets')%20"
+#'
+#' @returns A string formatted for 'where' portion of url for querying Open Geography portal
+#' @export
+
+build_constituency_query_string <- function(constituency_list, ...) {
+  no_spaces_w_quotes <- paste0("'", gsub("\\s", "%20", constituency_list), "'")
+  query_string <- paste(paste(..., sep = "%20%"), no_spaces_w_quotes, sep = "%20", collapse = "%20OR%20")
+
+  return(paste0("%20(", query_string, ")%20"))
+}
+
