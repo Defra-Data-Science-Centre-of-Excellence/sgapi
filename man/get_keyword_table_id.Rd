@@ -4,10 +4,15 @@
 \alias{get_keyword_table_id}
 \title{Keyword Search of 'nomis'}
 \usage{
-get_keyword_table_id(usr_keyword)
+get_keyword_table_id(
+  usr_keyword,
+  base_url = "https://www.nomisweb.co.uk/api/v01"
+)
 }
 \arguments{
 \item{usr_keyword}{Keyword to search 'nomis' tables for, e.g. "religion", "employment", "housing"}
+
+\item{Base}{nomis url to query}
 }
 \value{
 A tidy dataframe of all nomis tables and their ids, which contain the chosen keyword.

@@ -4,10 +4,12 @@
 \alias{get_table_info_brief}
 \title{Key 'nomis' Table Information}
 \usage{
-get_table_info_brief(id)
+get_table_info_brief(id, base_url = "https://www.nomisweb.co.uk/api/v01")
 }
 \arguments{
 \item{id}{A valid 'nomis' table id given as a string, e.g. NM_46_1.}
+
+\item{base_url}{Base nomis url to query}
 }
 \value{
 A json file containing the DatasetInfo, DatasetMetadata, Dimensions (variables), Dataset Contact, Units from the target 'nomis' table.

@@ -10,7 +10,7 @@ Description: Facilitates extraction of geospatial data from the 'Office for Nati
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 URL: https://defra-data-science-centre-of-excellence.github.io/sgapi/, https://github.com/Defra-Data-Science-Centre-of-Excellence/sgapi
 BugReports: https://github.com/Defra-Data-Science-Centre-of-Excellence/sgApi/issues
 Imports:

@@ -14,8 +14,8 @@
 #' @export
 
 #The dimensions refer to the different columns of the table, i.e. year of interest, total claimants, occupation, etc.
-get_table_dimensions <- function(id) {
-  dimensions_overview <- get_overview(id)$overview$dimensions$dimension
+get_table_dimensions <- function(id, base_url = "https://www.nomisweb.co.uk/api/v01") {
+  dimensions_overview <- get_overview(id, base_url = base_url)$overview$dimensions$dimension
   assert_function(is.null(dimensions_overview), "Invalid table identifier - use list_tables() to generate a list of available tables")
   output <- c()
   # LOOP OVER EACH DIMENSION

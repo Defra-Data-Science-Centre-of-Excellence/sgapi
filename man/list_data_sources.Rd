@@ -4,7 +4,10 @@
 \alias{list_data_sources}
 \title{List 'nomis' Data Sources}
 \usage{
-list_data_sources()
+list_data_sources(base_url = "https://www.nomisweb.co.uk/api/v01")
+}
+\arguments{
+\item{base_url}{Base nomis url to query}
 }
 \value{
 A tidy dataframe of all available data sources accessible through the 'nomis' API system.

@@ -8,6 +8,7 @@
 #' @importFrom magrittr %>%
 #' 
 #' @param id A valid 'nomis' id.
+#' @param base_url Base nomis url to query
 #' 
 #' @examples 
 #' get_overview(id="NM_1_1")
@@ -15,12 +16,11 @@
 #' @returns An object with overview information of chosen data set. Object has the structure of the extracted JSON object.
 #' @export
 
-get_overview <- function(id) {
+get_overview <- function(id, base_url = "https://www.nomisweb.co.uk/api/v01") {
   tryCatch(
     {
-      base_url = "https://www.nomisweb.co.uk/api/v01/"
       raw_data <- httr::GET(paste0(base_url,
-                       "dataset/",
+                       "/dataset/",
                        id,
                        ".overview.json")) %>%
                        httr::content()

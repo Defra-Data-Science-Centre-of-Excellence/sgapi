@@ -4,10 +4,12 @@
 \alias{get_overview}
 \title{Table Overview}
 \usage{
-get_overview(id)
+get_overview(id, base_url = "https://www.nomisweb.co.uk/api/v01")
 }
 \arguments{
 \item{id}{A valid 'nomis' id.}
+
+\item{base_url}{Base nomis url to query}
 }
 \value{
 An object with overview information of chosen data set. Object has the structure of the extracted JSON object.

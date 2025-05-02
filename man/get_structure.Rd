@@ -10,6 +10,8 @@ get_structure(id, dim)
 \item{id}{A valid 'nomis' id.}
 
 \item{dim}{The name of the g which dimension is queried.}
+
+\item{base_url}{Base nomis url to query}
 }
 \value{
 An object with JSON structure for the chosen dimension of the selected 'nomis' table.
