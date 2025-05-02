@@ -47,13 +47,12 @@ get_boundaries <- function(boundary,
   spatial_object <- sf::st_set_crs(sf::st_sf(sf::st_sfc()), value = "WGS84")
   
   result_offset <- 0
-  new_sf <- sf::st_read(sprintf("%s&resultOffset=%s", ons_url, result_offset))
-  spatial_object <- rbind(spatial_object, new_sf)
+  curr_url <- ons_url
   
-  while (length(new_sf$geometry) > 0) {
-    result_offset <- result_offset + 2000
-    new_sf <- sf::st_read(sprintf("%s&resultOffset=%s", ons_url, result_offset))
+  while ({new_sf <- sf::st_read(curr_url); length(new_sf$geometry) > 0}) {
     spatial_object <- rbind(spatial_object, new_sf)
+    result_offset <- result_offset + 2000
+    curr_url <- sprintf("%s&resultOffset=%s", ons_url, result_offset)
   }
 
   if (length(spatial_object) == 1L) {

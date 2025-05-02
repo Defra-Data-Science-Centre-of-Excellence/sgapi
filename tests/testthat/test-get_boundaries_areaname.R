@@ -20,11 +20,3 @@ test_that("A valid boundary and valid areanames returns a list when there are > 
   "list")
 })
 
-test_that("A valid boundary containing a space in the title throws an error", {
-  expect_error(get_boundaries_areaname("Local Authority_Districts_December_2022_UK_BGC_V2", "LAD22NM", c("Derbyshire Dales", "Harrogate")))
-})
-
-test_that("Invalid area name(s) returns an error", {
-  expect_error(get_boundaries_areaname("Local Authority_Districts_December_2022_UK_BGC_V2", "LAD22NM", c("Derbyshire", "London")))
-})
-

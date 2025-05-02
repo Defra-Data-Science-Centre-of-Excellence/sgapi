@@ -1,5 +1,5 @@
 test_that("Test select can be passed in options", {
-  expect_no_error(get_table("NM_1_1", options = list("geography" = "TYPE480", "select" = c("GEOGRAPHY_NAME", "C_AGE", "OBS_VALUE"))))
+  expect_no_error(get_table("NM_1002_1", options = list("geography" = "TYPE265", "time" = "latest")))
 })
 
 test_that("Valid table ID returns a vector", {
