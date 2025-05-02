@@ -22,7 +22,7 @@
 #' get_ons_table("nm_1_1", 
 #'               geography = "TYPE480", time = "latest", measures = 20100, item = 1, 
 #'               select = c("geography_name", "sex_name", "obs_value"),
-#'               rows = c("geography_name"), cols = c("sex_name))
+#'               rows = c("geography_name"), cols = c("sex_name"))
 #'
 #' @returns A dataframe containing the data downloaded from ONS' Nomis API
 #' @export

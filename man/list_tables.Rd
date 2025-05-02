@@ -4,7 +4,7 @@
 \alias{list_tables}
 \title{Available 'nomis' Tables}
 \usage{
-list_tables(base_url = "https://www.nomisweb.co.uk/api/v01/")
+list_tables(base_url = "https://www.nomisweb.co.uk/api/v01")
 }
 \arguments{
 \item{base_url}{Url of the API from which the available tables are listed.}

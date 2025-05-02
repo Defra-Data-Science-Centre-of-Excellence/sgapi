@@ -4,7 +4,11 @@
 \alias{get_boundaries}
 \title{Get Boundaries Using Geospatial Filter}
 \usage{
-get_boundaries(boundary, geometry_filter = NULL)
+get_boundaries(
+  boundary,
+  geometry_filter = NULL,
+  base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services"
+)
 }
 \arguments{
 \item{boundary}{A valid ONS boundary name given as a string.}

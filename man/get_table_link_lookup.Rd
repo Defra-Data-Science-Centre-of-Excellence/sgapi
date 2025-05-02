@@ -9,7 +9,8 @@ get_table_link_lookup(
   col_name_1,
   col_name_2,
   col_name_3,
-  col_name_4
+  col_name_4,
+  base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services"
 )
 }
 \arguments{

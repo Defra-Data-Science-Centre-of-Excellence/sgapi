@@ -4,7 +4,13 @@
 \alias{get_table}
 \title{Get 'nomis' Table}
 \usage{
-get_table(id, options, selection = NULL, uid = NULL)
+get_table(
+  id,
+  options,
+  selection = NULL,
+  uid = NULL,
+  base_url = "https://www.nomisweb.co.uk/api/v01"
+)
 }
 \arguments{
 \item{id}{a table ID recognised by 'nomis' (e.g. "NM_1_1")}
@@ -14,6 +20,8 @@ get_table(id, options, selection = NULL, uid = NULL)
 \item{selection}{a vector of column names to return. NULL returns all. Defaults to NULL.}
 
 \item{uid}{Unique 'nomis' identifier to enable larger 'nomis' queries - https://www.nomisweb.co.uk/. Defaults to NULL.}
+
+\item{base_url}{Nomis base url to query}
 }
 \value{
 A tidy dataframe of selected 'nomis' table with the selected parameters and user filters applied.
