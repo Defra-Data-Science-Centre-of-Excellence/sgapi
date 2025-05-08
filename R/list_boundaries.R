@@ -15,7 +15,7 @@ list_boundaries <- function(base_url = "https://services1.arcgis.com/ESMARspQHYM
   
   message("Querying open geography portal -> ", open_geography_url)
   
-  raw_data <- httr::GET(open_geography_url) |> httr::content()
+  raw_data <- httr::content(httr::GET(open_geography_url))
   
   return(unlist(lapply(raw_data$services, function(x) x[["name"]])))
 }

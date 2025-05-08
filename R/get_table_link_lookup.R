@@ -46,7 +46,7 @@ get_table_link_lookup <- function(lookup_table, col_name_1, col_name_2, col_name
   url_query_string <- do.call(build_url_query_string, url_queries)
   ons_url <- sprintf("%s/%s", api_link, url_query_string)
 
-  raw_ons_data <- httr::GET(ons_url) |> httr::content()
+  raw_ons_data <- httr::content(httr::GET(ons_url))
   features <- raw_ons_data$features
 
   # API allows a maximum of 32,000 'features' to be fetched in 
@@ -56,7 +56,7 @@ get_table_link_lookup <- function(lookup_table, col_name_1, col_name_2, col_name
   while (length(raw_ons_data$features) > 0) {
     result_offset <- result_offset + 32000
     curr_url <- sprintf("%s&%s", ons_url, paste("resultOffset", result_offset, sep = "="))
-    raw_ons_data <- httr::GET(curr_url) |> httr::content()
+    raw_ons_data <- httr::content(httr::GET(curr_url))
     features <- c(features, raw_ons_data$features)
   }
   
