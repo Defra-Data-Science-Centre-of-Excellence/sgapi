@@ -11,7 +11,7 @@
 #' @export
 
 list_boundaries <- function(base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services") {
-  open_geography_url <- paste0(base_url, "/?f=pjson")
+  open_geography_url <- paste0(base_url, "/?f=json")
   
   message("Querying open geography portal -> ", open_geography_url)
   
