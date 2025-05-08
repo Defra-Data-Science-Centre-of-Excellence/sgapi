@@ -9,6 +9,7 @@
 #' @param col_name_2 Field in ONS table containing the constituency code of the larger scale resolution.
 #' @param col_name_3 Field in ONS table containing the constituency name of the smaller scale resolution.
 #' @param col_name_4 Field in ONS table containing the constituency name of the larger scale resolution.
+#' @param base_url Open geography portal base url
 #' 
 #' @examples 
 #' \dontrun{
@@ -66,7 +67,7 @@ get_table_link_lookup <- function(lookup_table, col_name_1, col_name_2, col_name
     con_code_small = sapply(features, function(x) x[["attributes"]][[col_name_4]])
   )
 
-  return(distinct(ons_data))
+  return(dplyr::distinct(ons_data))
 }
 
 

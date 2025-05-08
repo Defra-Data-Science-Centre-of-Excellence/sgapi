@@ -9,6 +9,7 @@
 #' @importFrom methods is
 #' 
 #' @param id A valid 'nomis' table id given as a string.
+#' @param base_url Nomis API base url
 #' 
 #' @examples 
 #' get_available_scales(id="NM_1003_1")

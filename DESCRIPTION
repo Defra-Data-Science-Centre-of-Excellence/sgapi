@@ -3,7 +3,7 @@ Title: Aid Querying 'nomis' and 'Office for National Statistics Open Geography' 
 Version: 1.1.0
 Authors@R: 
     c(
-      person("Michael Stocks", "sgapi.orhub@gmail.com", role = c("aut", "cre")),
+      person("Michael", "Stocks", email = "sgapi.orhub@gmail.com", role = c("aut", "cre")),
       person("Andrew", "Christy", role = "aut"),
       person("James","Macpherson", role = "aut"),
       person("Hadyn","Jenkins", role = "aut" ),

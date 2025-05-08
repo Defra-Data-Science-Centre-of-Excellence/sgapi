@@ -16,7 +16,8 @@
 #' get_ons_table("nm_1_1")
 #'
 #' # Filter "Jobseeker's Allowance" dataset and select columns to output ('select')
-#' get_ons_table("nm_1_1", geography = "TYPE480", time = "latest", measures = 20100, item = 1, select = c("geography_name", "sex_name", "obs_value"))
+#' get_ons_table("nm_1_1", geography = "TYPE480", time = "latest", measures = 20100, item = 1, 
+#'               select = c("geography_name", "sex_name", "obs_value"))
 #' 
 #' # Aggregate statistics using 'rows' and 'cols'
 #' get_ons_table("nm_1_1", 

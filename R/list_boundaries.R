@@ -3,6 +3,8 @@
 #' @description
 #' Retrieve all available ArcGIS boundary layers
 #' from the 'ONS Open Geography Portal'.
+#'
+#' @param base_url Open geography portal base url
 #' 
 #' @returns A vector of available boundary layers on 'ONS Open Geography'.
 #' 

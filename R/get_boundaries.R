@@ -1,5 +1,8 @@
 #' @title Get Boundaries Using Geospatial Filter
 #' 
+#' @usage get_boundaries(boundary, geometry_filter = NULL, 
+#' base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services")
+#'
 #' @description
 #' Retrieve boundaries from the Office for National Statistics (ONS) 'ONS Geography Portal'
 #' given a valid boundary name and layer name. 
@@ -10,6 +13,7 @@
 #' @param boundary A valid ONS boundary name given as a string.
 #' @param geometry_filter geospatial shape or point (using latitude and longitude).
 #' Currently limited to a rectangular box or dropped pin.
+#' @param base_url Open Geography Portal base url
 #'
 #' @examples 
 #' \dontrun{

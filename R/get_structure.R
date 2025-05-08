@@ -6,7 +6,7 @@
 #' 
 #' @importFrom magrittr %>%
 #' 
-#' @usage get_structure(id, dim)
+#' @usage get_structure(id, dim, base_url = "https://www.nomisweb.co.uk/api/v01")
 #' 
 #' @param id A valid 'nomis' id.
 #' @param dim The name of the g which dimension is queried.

@@ -7,6 +7,7 @@
 #' @import xml2
 #' 
 #' @param name A string to search for within 'nomis' table titles.
+#' @param base_url Nomis API base url
 #' 
 #' @examples get_table_id(name="employment")
 #' 
