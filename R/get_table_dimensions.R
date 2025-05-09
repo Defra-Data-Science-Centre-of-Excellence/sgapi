@@ -7,6 +7,7 @@
 #' this function will return all of the available age, country and geography filters available on the table.
 #' 
 #' @param id A table ID recognised by 'nomis' (e.g "NM_1_1").
+#' @param base_url Nomis API base url
 #' 
 #' @examples get_table_dimensions(id="NM_1240_1")
 #' 

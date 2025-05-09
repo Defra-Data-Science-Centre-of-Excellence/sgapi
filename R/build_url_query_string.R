@@ -8,7 +8,9 @@
 #' Each value part of the named arguments must be coercible to character.
 #' For example, list(key1 = "value1", key2 = 42, key3 = c(1, 2, 4)) would
 #' be acceptable as it can all be coerced to characters
-#' 
+#'
+#' @usage build_url_query_string(prefix = "?", sep = "&", value_sep = ",", ...)
+#'
 #' @param prefix Prefix to returned URL. Defaults to "?". 
 #' @param sep . String separating used to separate in the URL output 
 #' each named argument in (...). Defaults to "&".
@@ -24,7 +26,8 @@
 #' "?field1=option1"
 #' build_url_query_string(field1 = "option1", field2 = 42, field3 = c(1, 2, 3))
 #' "?field1=option1&field2=42&field3=1,2,3"
-#' build_url_query_string(prefix = "/query?", sep = "|", value_sep = ":", field1 = 1, field2 = c(7, 8, 9))
+#' build_url_query_string(prefix = "/query?", sep = "|", value_sep = ":", 
+#'                        field1 = 1, field2 = c(7, 8, 9))
 #' "/query?field1=1|field2=7:8:9"
 #'
 #' @returns A string containing the named arguments parsed into the URL query string format
@@ -54,8 +57,10 @@ build_url_query_string <- function(prefix = "?", sep = "&", value_sep = ",", ...
 #' Create correctly formatted 'where' part of url query string used by
 #' get_boundary_areaname to fetch contituency boundaries
 #' 
+#' @usage build_constituency_query_string(constituency_list, ...)
+#'
 #' @param constituency_list Vector of constituency names
-#' @param Additional strings to be added to the query string
+#' @param ... Additional strings to be added to the query string
 #'
 #' @examples
 #' build_constituency_query_string("Westminster", "LAD22NM", "3D")
