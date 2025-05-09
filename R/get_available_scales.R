@@ -5,7 +5,6 @@
 #' This is useful as each table only has data at a specific set of scales, 
 #' e.g. many census tables are available at MSOA and LSOA resolutions but not at Regional level.
 #' 
-#' @importFrom magrittr %>%
 #' @importFrom methods is
 #' 
 #' @param id A valid 'nomis' table id given as a string.
@@ -29,11 +28,7 @@ get_available_scales <- function(id, base_url = "https://www.nomisweb.co.uk/api/
     return(FALSE)
   }
    
-  x <- httr::GET(paste0(base_url,
-                        "/dataset/",
-                        id,
-                        ".overview.json")) %>%
-    httr::content()
+  x <- httr::content(httr::GET(paste0(base_url, "/dataset/", id, ".overview.json")))
   
   geography_index <- NULL
   #Loop through dimensions to extract all different geography codes (i.e. boundary scales which the tables are compatiblke with)

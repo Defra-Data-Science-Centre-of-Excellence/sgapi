@@ -14,13 +14,8 @@
 #' @export
 
 get_keyword_table_id <- function(usr_keyword, base_url = "https://www.nomisweb.co.uk/api/v01"){
-  raw_data <- httr::GET(
-    paste0(base_url, "/dataset/def.sdmx.json?search=keyword-*",
-      usr_keyword,
-      "*"
-    )) %>%
-    httr::content()
-  
+  raw_data <- httr::content(httr::GET(
+    paste0(base_url, "/dataset/def.sdmx.json?search=keyword-*", usr_keyword, "*")))
   
   #validation check
   assert_function(length(raw_data$structure$keyfamilies)==2L,"No tables with chosen keyword")

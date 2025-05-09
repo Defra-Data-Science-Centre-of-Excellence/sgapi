@@ -5,8 +5,6 @@
 #' Returned object includes description of the dataset, last update date, contact for the data. 
 #' It also extracts all of the available instances of the available table dimensions, which can then be used to filter the dataset 'nomis' table.
 #' 
-#' @importFrom magrittr %>%
-#' 
 #' @param id A valid 'nomis' id.
 #' @param base_url Base nomis url to query
 #' 
@@ -19,11 +17,8 @@
 get_overview <- function(id, base_url = "https://www.nomisweb.co.uk/api/v01") {
   tryCatch(
     {
-      raw_data <- httr::GET(paste0(base_url,
-                       "/dataset/",
-                       id,
-                       ".overview.json")) %>%
-                       httr::content()
+      raw_data <- httr::content(httr::GET(paste0(base_url, "/dataset/", id, ".overview.json")))
+                       
       assert_function(length(raw_data)==2L,"Chosen Nomis table id does not exist, see column 'id' in sgapi::nomisTables for available table ids. If table is recorded in sgapi::nomisTables, contact nomis to check for any know issues with the dataset")
       return(raw_data)
     },

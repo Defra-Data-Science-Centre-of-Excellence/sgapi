@@ -9,8 +9,6 @@
 #' 
 #' @param base_url Base nomis url to query
 #'
-#' @importFrom magrittr %>%
-#'
 #' @examples
 #' list_data_sources()
 #' 
@@ -18,8 +16,7 @@
 #' @export
 
 list_data_sources <- function(base_url = "https://www.nomisweb.co.uk/api/v01") {
-  y <- httr::GET(paste0(base_url, "/contenttype/sources.json")) %>%
-    httr::content()
+  y <- httr::content(httr::GET(paste0(base_url, "/contenttype/sources.json")))
  
   sources <- data.frame()
   for (i in seq_along(y$contenttype$item)) {
