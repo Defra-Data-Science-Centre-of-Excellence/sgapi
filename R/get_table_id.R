@@ -7,6 +7,7 @@
 #' @import xml2
 #' 
 #' @param name A string to search for within 'nomis' table titles.
+#' @param base_url Nomis API base url
 #' 
 #' @examples get_table_id(name="employment")
 #' 
@@ -14,12 +15,11 @@
 #' 
 #' @export
 
-get_table_id <- function(name){
-  base_url <- "https://www.nomisweb.co.uk/api/v01/"
+get_table_id <- function(name, base_url = "https://www.nomisweb.co.uk/api/v01") {
   raw_data <- httr::GET(
     paste0(
       base_url,
-      "dataset/def.sdmx.json?search=name-*",
+      "/dataset/def.sdmx.json?search=name-*",
       name,
       "*"
     )) %>%

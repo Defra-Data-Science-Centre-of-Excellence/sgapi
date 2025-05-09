@@ -6,10 +6,11 @@
 #' 
 #' @importFrom magrittr %>%
 #' 
-#' @usage get_structure(id, dim)
+#' @usage get_structure(id, dim, base_url = "https://www.nomisweb.co.uk/api/v01")
 #' 
 #' @param id A valid 'nomis' id.
 #' @param dim The name of the g which dimension is queried.
+#' @param base_url Base nomis url to query
 #' 
 #' @returns An object with JSON structure for the chosen dimension of the selected 'nomis' table. 
 #' 
@@ -17,12 +18,11 @@
 #' get_structure(id="NM_187_1",dim="industry")
 #' @export
 
-get_structure <- function(id,dim) {
+get_structure <- function(id, dim, base_url = "https://www.nomisweb.co.uk/api/v01") {
   tryCatch(
     {
-      base_url = "https://www.nomisweb.co.uk/api/v01/"
       raw_data <- httr::GET(paste0(base_url,
-                      "dataset/",
+                      "/dataset/",
                       id,
                       "/",
                       dim,

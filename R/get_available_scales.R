@@ -9,6 +9,7 @@
 #' @importFrom methods is
 #' 
 #' @param id A valid 'nomis' table id given as a string.
+#' @param base_url Nomis API base url
 #' 
 #' @examples 
 #' get_available_scales(id="NM_1003_1")
@@ -17,7 +18,7 @@
 #' 
 #' @export
  
-get_available_scales <- function(id) {
+get_available_scales <- function(id, base_url = "https://www.nomisweb.co.uk/api/v01") {
   
   is_nested <- function(l) {
     stopifnot(is.list(l))
@@ -27,11 +28,9 @@ get_available_scales <- function(id) {
     }
     return(FALSE)
   }
-  
-  base_url = "https://www.nomisweb.co.uk/api/v01/"
-  
+   
   x <- httr::GET(paste0(base_url,
-                        "dataset/",
+                        "/dataset/",
                         id,
                         ".overview.json")) %>%
     httr::content()

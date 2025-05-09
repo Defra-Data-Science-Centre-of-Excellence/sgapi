@@ -23,12 +23,33 @@ Users must abide by the licensing agreements when publishing information extract
     install.packages("remotes")
     remotes::install_github("https://github.com/Defra-Data-Science-Centre-of-Excellence/sgapi")
 
+## Quick start
+
+```R
+# List available nomis tables
+list_tables()
+
+# Pull all data from the "Jobseeker's Allowance" dataset
+get_ons_table("nm_1_1")
+
+# Filter "Jobseeker's Allowance" dataset and 'select' columns to output
+get_ons_table("nm_1_1",
+              geography = "TYPE480", time = "latest", measures = 20100, item = 1,
+              select = c("geography_name", "sex_name", "obs_value"))
+
+# Aggregate statistics using 'rows' and 'cols'
+get_ons_table("nm_1_1",
+              geography = "TYPE480", time = "latest", measures = 20100, item = 1,
+              select = c("geography_name", "sex_name", "obs_value"),
+              rows = c("geography_name"), cols = c("sex_name"))
+```
+
 ## Key Functions
 
 1. **get_boundaries.R** - returns shapefile of areas in contact with a user selected rectangular area, at your chosen ONS resolution
 2. **get_boundaries_areanames.R** - returns the shapefiles for all areas input into the function.
 3. **get_table_dimensions.R** - for a chosen nomis table this function returns all of the parameters which can be filtered
-4. **get_table.R** - extracts a dataframe from the chosen nomis table for your selected area and selected filters
+4. **get_ons_table.R** - extracts a dataframe from the chosen nomis table for your selected area and selected filters
 5. **get_table_link_lookup.R** - retrieves a dataframe with the lookup table between two resolutions, taken from ONS Open Geography lookup tables
 6. **get_table_info_brief.R** - returns summary information for the selected nomis table, including contact details, data description and table status
 

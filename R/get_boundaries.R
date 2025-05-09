@@ -1,5 +1,8 @@
 #' @title Get Boundaries Using Geospatial Filter
 #' 
+#' @usage get_boundaries(boundary, geometry_filter = NULL, 
+#' base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services")
+#'
 #' @description
 #' Retrieve boundaries from the Office for National Statistics (ONS) 'ONS Geography Portal'
 #' given a valid boundary name and layer name. 
@@ -10,6 +13,7 @@
 #' @param boundary A valid ONS boundary name given as a string.
 #' @param geometry_filter geospatial shape or point (using latitude and longitude).
 #' Currently limited to a rectangular box or dropped pin.
+#' @param base_url Open Geography Portal base url
 #'
 #' @examples 
 #' \dontrun{
@@ -22,70 +26,43 @@
 #' @export
 
 get_boundaries <- function(boundary,
-                          geometry_filter = NULL) {
-  base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/"
+                          geometry_filter = NULL,
+                          base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services") {
 
-  output_fields="*"
-  layer=0
-  geometry_filter <-gsub("\\,","%2C",geometry_filter)
-  assert_function(grepl("\\s",boundary),"Boundary must be not contain any spaces, see https://geoportal.statistics.gov.uk/search?q=Boundary&sort=Date%20Created%7Ccreated%7Cdesc for available boundaries")
-  tryCatch(
-    {  
+  url_queries <- list(
+    "prefix" = "query?",
+    "where" = "1%3D1",
+    "outFields" = "*",
+    "outSR" = 4326,
+    "geometryPrecision" = 3,
+    "f" = "geojson")
+
+  if (!is.null(geometry_filter)) {
+    geometry_filter <- gsub("\\,", "%2C", geometry_filter)
+    url_queries[["geometry"]] <- geometry_filter
+    url_queries[["geometryType"]] <- "esriGeometryEnvelope"
+    url_queries[["inSR"]] <- 4326
+    url_queries[["spatialRel"]] <- "esriSpatialRelIntersects"
+  }
   
-  if (is.null(geometry_filter)) {
-    spatial_object <- sf::st_read(
-      paste0(
-        base_url,
-        boundary,
-        "/FeatureServer/",
-        layer,
-        "/query?where=1%3D1&outFields=",
-        output_fields,
-        "&outSR=4326&geometryPrecision=3&f=geojson"
-      )
-    )
-  } else{
-    i <- 0
-    x <- TRUE
-    spatial_object <- sf::st_set_crs(sf::st_sf(sf::st_sfc()), value = "WGS84")
-    while (x == TRUE)
-    {
-      result_offset <- i * 200 #this is used move through the dataset as you loop through the different spatial areas
-      
-      new_sf <- sf::st_read(
-        paste0(
-          base_url,
-          boundary,
-          "/FeatureServer/",
-          layer,
-          "/query?where=1%3D1&outFields=",
-          output_fields,
-          "&geometry=",
-          geometry_filter,
-          "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=4326&geometryPrecision=3&",
-          "resultOffset=",
-          result_offset, 
-          "&",
-          "f=geojson"
-        )
-      )
-      
-      if (length(new_sf$geometry) == 0) {
-        x <- FALSE
-      } else{
-        spatial_object <- rbind(spatial_object, new_sf)
-        i <- i + 1
-      }
-    }
+  url_query_string <- do.call(build_url_query_string, url_queries)
+  ons_url <- sprintf("%s/%s/FeatureServer/0/%s", base_url, boundary, url_query_string)
+  
+  spatial_object <- sf::st_set_crs(sf::st_sf(sf::st_sfc()), value = "WGS84")
+  
+  result_offset <- 0
+  curr_url <- ons_url
+  
+  while ({new_sf <- sf::st_read(curr_url); length(new_sf$geometry) > 0}) {
+    spatial_object <- rbind(spatial_object, new_sf)
+    result_offset <- result_offset + 2000
+    curr_url <- sprintf("%s&resultOffset=%s", ons_url, result_offset)
   }
 
-  if(length(spatial_object)==1L){warning("OUT OF BOUNDS. The selected geometry does not contain any areas in chosen boundary scale")}
+  if (length(spatial_object) == 1L) {
+    warning("OUT OF BOUNDS. The selected geometry does not contain any areas in chosen boundary scale")
+  }
+  
   return(spatial_object)
-    },
-  error = function(e) {
-    message("Error in boundary name or geometry filter, check your chosen boundary scale on https://geoportal.statistics.gov.uk/")
-    return(NULL)
-    }   
-  )
 }
 

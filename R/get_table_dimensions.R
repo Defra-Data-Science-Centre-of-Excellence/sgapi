@@ -7,6 +7,7 @@
 #' this function will return all of the available age, country and geography filters available on the table.
 #' 
 #' @param id A table ID recognised by 'nomis' (e.g "NM_1_1").
+#' @param base_url Nomis API base url
 #' 
 #' @examples get_table_dimensions(id="NM_1240_1")
 #' 
@@ -14,8 +15,8 @@
 #' @export
 
 #The dimensions refer to the different columns of the table, i.e. year of interest, total claimants, occupation, etc.
-get_table_dimensions <- function(id) {
-  dimensions_overview <- get_overview(id)$overview$dimensions$dimension
+get_table_dimensions <- function(id, base_url = "https://www.nomisweb.co.uk/api/v01") {
+  dimensions_overview <- get_overview(id, base_url = base_url)$overview$dimensions$dimension
   assert_function(is.null(dimensions_overview), "Invalid table identifier - use list_tables() to generate a list of available tables")
   output <- c()
   # LOOP OVER EACH DIMENSION

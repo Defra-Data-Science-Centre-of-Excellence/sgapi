@@ -3,31 +3,20 @@
 #' @description
 #' Retrieve all available ArcGIS boundary layers
 #' from the 'ONS Open Geography Portal'.
-#' 
-#' @importFrom magrittr %>%
+#'
+#' @param base_url Open geography portal base url
 #' 
 #' @returns A vector of available boundary layers on 'ONS Open Geography'.
 #' 
 #' @export
 
-list_boundaries <- function(){
+list_boundaries <- function(base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services") {
+  open_geography_url <- paste0(base_url, "/?f=json")
   
-  base_url = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/"
+  message("Querying open geography portal -> ", open_geography_url)
   
-  raw_data <- {httr::GET(paste0(base_url,
-                               "?f=pjson"))%>%
-    httr::content()}$services
+  raw_data <- httr::content(httr::GET(open_geography_url))
   
-  boundaries <- c()
-  
-  for(i in raw_data){
-    boundaries <- c(boundaries, i[["name"]])
-    
-  }
-  return(boundaries)
+  return(unlist(lapply(raw_data$services, function(x) x[["name"]])))
 }
-
-
-
-
 

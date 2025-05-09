@@ -7,14 +7,15 @@
 #' @import xml2
 #' 
 #' @param usr_keyword Keyword to search 'nomis' tables for, e.g. "religion", "employment", "housing"
+#' @param base_url nomis url to query
 #' 
 #' @examples get_keyword_table_id(usr_keyword="passports")
 #' @returns A tidy dataframe of all nomis tables and their ids, which contain the chosen keyword.
 #' @export
 
-get_keyword_table_id <- function(usr_keyword){
+get_keyword_table_id <- function(usr_keyword, base_url = "https://www.nomisweb.co.uk/api/v01"){
   raw_data <- httr::GET(
-    paste0("https://www.nomisweb.co.uk/api/v01/dataset/def.sdmx.json?search=keyword-*",
+    paste0(base_url, "/dataset/def.sdmx.json?search=keyword-*",
       usr_keyword,
       "*"
     )) %>%
