@@ -7,8 +7,6 @@
 #' of the dataset and any caveats. 
 #' It also returns information about the current status of the data, and when it was last updated.
 #' 
-#' @importFrom magrittr %>%
-#' 
 #' @param id A valid 'nomis' table id given as a string, e.g. NM_46_1.
 #' @param base_url Base nomis url to query
 #' 
@@ -20,11 +18,11 @@
 get_table_info_brief <- function(id, base_url = "https://www.nomisweb.co.uk/api/v01"){
   tryCatch(
     {
-      raw_info <- httr::GET(paste0(base_url,
+      raw_info <- httr::content(httr::GET(paste0(base_url,
                                   "/dataset/",
                                    id,
-                                  ".overview.json?select=DatasetInfo,DatasetMetadata,Dimensions,Codes-workforce,Contact,Units")) %>%
-      httr::content()
+                                  ".overview.json?select=DatasetInfo,DatasetMetadata,Dimensions,Codes-workforce,Contact,Units")))
+      
       assert_function(length(raw_info)==2L,"Chosen Nomis table id does not exist, see column 'id' in sgapi::nomisTables for available table ids")
     return(raw_info)
     },
