@@ -31,7 +31,7 @@ get_ons_table <- function(id, base_url = "https://www.nomisweb.co.uk/api/v01", c
   query_string <- build_url_query_string(...)
   nomis_url <- sprintf("%s/dataset/%s.data.csv%s", base_url, id, query_string)
 
-  message("Querying Nomis API -> ", nomis_url)
+  sgapi_message("Querying Nomis API -> ", nomis_url)
 
   nomis_conn <- url(nomis_url)
   nomis_table <- csv_parser_fnc(nomis_conn)

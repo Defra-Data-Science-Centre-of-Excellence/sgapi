@@ -36,7 +36,7 @@ list_ons_tables <- function(search = NULL, base_url = "https://www.nomisweb.co.u
     nomis_url <- sprintf("%s?search=%s", nomis_url, search)
   }
 
-  message("Querying Nomis API -> ", nomis_url)
+  sgapi_message("Querying Nomis API -> ", nomis_url)
    
   nomis_json <- jsonlite::fromJSON(nomis_url)
   nomis_table <- nomis_json$structure$keyfamilies$keyfamily
