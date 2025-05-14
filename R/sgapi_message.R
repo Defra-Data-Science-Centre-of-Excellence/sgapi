@@ -11,7 +11,6 @@ DESCRIPTION <- yaml.load_file("DESCRIPTION")
 #' with prefix at front
 #'
 #' @examples
-#' # Retrieve all available ONS datasets
 #' sgapi_message("Some message for the user")
 #' [sgapi-1.1.0] Some message for the user
 #'
