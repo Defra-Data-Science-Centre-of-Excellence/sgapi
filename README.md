@@ -26,8 +26,17 @@ Users must abide by the licensing agreements when publishing information extract
 ## Quick start
 
 ```R
-# List available nomis tables
-list_tables()
+# List all available nomis tables
+list_ons_tables()
+
+# Use search terms to find specific tables
+list_ons_tables(search = "*jobseeker*,*allowance*")
+          id                                                                    name
+1     NM_1_1                         Jobseekers Allowance with rates and proportions
+2     NM_2_1                                       claimant count - age and duration
+3     NM_4_1                                Jobseekers Allowance by age and duration
+4     NM_6_1                                             claimant count - occupation
+5     NM_7_1                           claimant count - occupation, age and duration
 
 # Pull all data from the "Jobseeker's Allowance" dataset
 get_ons_table("nm_1_1")
@@ -56,7 +65,7 @@ get_ons_table("nm_1_1",
 ## Exploratory Functions
 
 1. **list_boundaries.R** - lists all boundary masks available on the ONS Open Geography
-2. **list_tables.R** - lists all tables, including their name and reference code, from nomis
+2. **list_ons_tables.R** - lists all ONS tables or search for specific tables
 3. **get_available_scales.R** - provides list of available geographical resolutions for your chosen nomis table
 4. **list_data_sources.R** - lists all available data sources on nomis
 
